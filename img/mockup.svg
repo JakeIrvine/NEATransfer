@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="mockup.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0928288"
+     inkscape:cx="403.2529"
+     inkscape:cy="334.46215"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:snap-global="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="724"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.99;fill:#ffffff;fill-opacity:0.66;stroke:#000000;stroke-width:1.2;stroke-linecap:square;stroke-miterlimit:4.3;paint-order:fill markers stroke"
+       id="rect833"
+       width="162.81894"
+       height="94.862282"
+       x="27.65202"
+       y="41.394936"
+       ry="0"
+       rx="0" />
+    <path
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 27.360008,47.699532 H 190.39364"
+       id="path837" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.78295px;line-height:1.25;font-family:Gotham;-inkscape-font-specification:Gotham;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="85.476814"
+       y="46.347733"
+       id="text841"><tspan
+         sodipodi:role="line"
+         id="tspan839"
+         x="85.476814"
+         y="46.347733"
+         style="stroke-width:0.264583">NEA Font Renderer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:61.181px;line-height:1.25;font-family:Gotham;-inkscape-font-specification:Gotham;letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264583"
+       x="84.320747"
+       y="104.02806"
+       id="text845"><tspan
+         sodipodi:role="line"
+         id="tspan843"
+         x="84.320747"
+         y="104.02806"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Adobe Jenson Pro';-inkscape-font-specification:'Adobe Jenson Pro';fill:none;stroke:#000000;stroke-width:0.264583">m</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.60024px;line-height:1.25;font-family:Gotham;-inkscape-font-specification:Gotham;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="28.746367"
+       y="128.18631"
+       id="text841-7"><tspan
+         sodipodi:role="line"
+         id="tspan839-1"
+         x="28.746367"
+         y="128.18631"
+         style="stroke-width:0.264583">Font: Adobe Calson Pro</tspan><tspan
+         sodipodi:role="line"
+         x="28.746367"
+         y="131.43661"
+         style="stroke-width:0.264583"
+         id="tspan865">Character: m (0x6D)</tspan><tspan
+         sodipodi:role="line"
+         x="28.746367"
+         y="134.6869"
+         style="stroke-width:0.264583"
+         id="tspan867">Time to render: 654ms</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.60024px;line-height:1.25;font-family:Gotham;-inkscape-font-specification:Gotham;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="189.21663"
+       y="127.88206"
+       id="text841-7-4"><tspan
+         sodipodi:role="line"
+         x="189.21663"
+         y="127.88206"
+         style="text-align:end;text-anchor:end;stroke-width:0.264583"
+         id="tspan867-1">Change character [c]</tspan><tspan
+         sodipodi:role="line"
+         x="189.21663"
+         y="131.13237"
+         style="text-align:end;text-anchor:end;stroke-width:0.264583"
+         id="tspan898">Change font [f]</tspan><tspan
+         sodipodi:role="line"
+         x="189.21663"
+         y="134.38266"
+         style="text-align:end;text-anchor:end;stroke-width:0.264583"
+         id="tspan900">Toggle mode [m]</tspan></text>
+  </g>
+</svg>
