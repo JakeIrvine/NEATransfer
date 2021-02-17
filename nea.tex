@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage{fancyvrb}
 \usepackage{textcomp}
 \usepackage{bytefield}
 \graphicspath{ {./img/} }
@@ -62,6 +63,10 @@ virtual machine to run the instructions contained in the font.
 
 
 \section{Existing Solutions}
+
+Since we can see text on a screen, there are clearly several existing solutions
+to font rasterization. A few prominent examples are outlined below.
+
 \subsection{SDL\_ttf}
 SDL\_ttf is a ready to use library for rendering fonts to a texture using the
 SDL graphics library. Internally, it uses the freetype library, which is
@@ -69,7 +74,7 @@ discussed below.
 
 Advantages:
 \begin{itemize}
-\item{Simple to integrate into applications.}
+\item{Simple to integrate into (SDL) applications.}
 \item{Uses the freetype backend, which supports a wide range of font features.}
 \item{Can be compiled for any platform, due to the fact that it's written
     using crossplatform libraries and C++.}    
@@ -150,7 +155,21 @@ lettering that can be displayed on the screen or in print.
 \\
 \textbf{Font}: an instance of a typeface at a specfic size.
 \\
-\textbf{Glyph}: the shape corresponding to a specific character in a specific font. 
+\textbf{Glyph}: the shape corresponding to a specific character in a specific
+font.
+\\
+\textbf{TrueType}: TrueType is the industry standard for font files, and the
+specific file format that is being targeted by this project. It contains all of
+the data needed to describe a typeface (or sometimes multiple typefaces).
+\\
+\textbf{TTF file}: A file following the TrueType format.
+\\
+\textbf{Table}: a table in a TTF file is a section of data following a specfic
+format that is indexed using the table directory at the start of the font file.
+For example, the \texttt{glyf} table stores the actual glyph data of the font,
+and the \texttt{cmap} table stores the mappings between character and glyph.
+
+
 \subsection{Bezier Curves}
 Individual glyphs of a font are built up using \textit{outlines}, which are
 themselves built of several segments of line and curve. More specifically, an
@@ -233,9 +252,33 @@ should be rendered, or metadata such as the font licence or author. For example,
 the \texttt{kern} table contains data related to font kerning, which controls
 the spacing between individual letters.
 
-Of primary relevance to this project is the \texttt{glyf} table, which contains
-the actual glyph data used in the character to be rendered. It is structured as
-an array of glyphs, with each glyph as follows:
+There are several mandatory tables, as shown below. More tables may exist in the
+file, but are optional, and may contain extensions to the format, or other data
+such as raster images.
+\begin{center}
+  \begin{tabular}{ l | l }
+    
+    Name & Function \\
+    \hline
+    \texttt{cmap} & Maps between characters and glyphs \\
+    \texttt{glyf} & Stores the actual glyph data \\
+    \texttt{head} & Font header, contains various data involved in the rest of the font \\
+    \texttt{hhea} & Secondary header containing specifics of horizontal font layout \\
+    \texttt{hmtx} & Data on the metrics of fonts when layed out horizontally \\
+    \texttt{loca} & Indexes glyph IDs to offsets in the file \\
+    \texttt{maxp} & Contains the maximum quantities of various features of the font \\
+    \texttt{name} & Contains the name of the font \\
+    \texttt{post} & Data for printing fonts \\
+  \end{tabular}
+\end{center}
+
+The tables of relevance to this project are \texttt{head}, \texttt{loca},
+\texttt{cmap}, and \texttt{glyf}. A detailed explanation of table data
+structures can be found in the TrueType specification; a simplified version of
+the \texttt{glyf} table is shown below:
+
+The \texttt{glyf} table consists of a number of glyph data structures. Each data
+structure is either a simple or compound glyph, and is of the form
 
 \begin{bytefield}[bitwidth=2.2em]{16}
   \bitheader{0-15} \\
@@ -247,7 +290,7 @@ an array of glyphs, with each glyph as follows:
     \bitbox{16}{yMax} 
   \end{rightwordgroup} \\
 
-  \wordbox{3}{Either a simple glyph data structure, or a complex glyph data
+  \wordbox{3}{Either a simple glyph data structure, or a compound glyph data
     structure, dependent on the value of \texttt{numberOfContours}.}
 \end{bytefield}
 \\
@@ -270,7 +313,7 @@ an array of glyphs, with each glyph as follows:
   \wordbox{2}{Array of deltaY}\\
   \\
   \\
-  \bitbox{16}{\textbf{Complex Glyph Data}}\\
+  \bitbox{16}{\textbf{Compound Glyph Data}}\\
   \bitheader{0-15} \\
   \wordbox{1}{Flags (see full spec for details)}\\
   \wordbox{1}{Glyph Index}\\
@@ -278,14 +321,17 @@ an array of glyphs, with each glyph as follows:
   \wordbox{2}{\textit{variable size}\\Argument 2 (flag dependent)}
 \end{bytefield}
 
-\textit{Note: Most uses of complex glyph tables are outside of the scope of this project.}
+\textit{Note: Most uses of compound glyph tables are outside of the scope of this project.}
 \\
 \\
-Using this table, and the \texttt{whatever the char map table is called}, we can
-turn a single character into a set of curves and line segments that can be
-scaled and drawn to the screen.
 
-\section{Measurable Objectives}
+To turn a character into a set of points, we must first lookup the character in
+the \texttt{cmap} table. This will give us a glyph index, which we can index
+into the \texttt{loca} table to get a glyph offset and length. Finally, we can
+use the offset and length to find the appropriate section of the \texttt{glyf}
+table, and get the glyph data itself.
+
+\section{Project Objectives}
 \begin{enumerate}
   \item{The program will parse TTF files correctly, extracting character and
       glyph data from them.}
@@ -318,16 +364,8 @@ contrast, rendering bezier curves to the screen is a task is moderately simple,
 as the bezier curve is used frequently in computer graphics applications.
 
 I will program in C++, using the cmake build system, and use the SDL graphics
-library to display the GUI and rendered characters on the screen. Other
-libraries involved will be \texttt{sdl\_ttf} for rendering the GUI text, and
-\todo{perhaps} \texttt{sdl\_gfx} to simplify bezier curve rendering.
-
-Whilst it may seem strange to include a different font rasterizer in a project
-involving font rasterization, this rasterizer will be used only for the GUI, not
-the actual display of characters itself. This is because, when debugging, the
-GUI will need to remain in a functional state despite the font rasterizer itself
-not being functional. Should the rasterizer get to a sufficiently stable state I
-shall consider removing \texttt{sdl\_ttf} in favor of my own rasterizer.
+library to display the rendered characters to the screen. Finally, I will use a
+slightly modified version of \texttt{sdl\_gfx} to make rendering the characters easier. 
 
 \subsection{The Parser}
 The parser needs to take the filename of a font, and by examining the associated
@@ -361,55 +399,176 @@ index into a glyph offset and length.
 Finally, we lookup the glyph in the \texttt{glyf} table, and store the entire
 glyph data structure. This is quite complex to parse, and will have it's own
 section of the program specifically. Parsing this will result in a list of
-bezier curves to be rendered, which is then passed to the renderer.
+bezier curves to be rendered, which is then passed to the renderer. 
 
 \subsubsection{The \texttt{Font} class}
 A key data structure in this project will be the \texttt{Font} class. This is a
-large structure that contains, through composition, all the data needed to
-display the font.
+large structure that represents a specific font. We create one at the start of
+our program, and gradually fill it in over the course of parsing the font. 
 
 \begin{center}
-  \begin{tabular}{|l|c|c|}
+  \begin{tabular}{|p{7.5cm}|c|c|}
     \hline
     \multicolumn{3}{|c|}{The \texttt{Font} class} \\
     \hline
     \textbf{Type} & \textbf{Name} & \textbf{Access} \\
     \hline
-    \texttt{std::map<std::string, TableData>} & tables & private \\
+    \texttt{Glyph} & glyph & public \\
     \hline
-    \texttt{std::map<char, Glyph>} & glyphs & private \\
+    \texttt{std::string} & filename & private \\
     \hline
-    \texttt{std::string} & fontName & private \\
+    \texttt{Header} & header & private \\
+    \hline
+    \texttt{HEADTable} & head & private \\
+    \hline
+    \texttt{CMAPTable} & cmap & private \\
+    \hline
+    \texttt{std::vector<uint8\_t>*} & data & private \\
+    \hline
+    \texttt{int} & fileLength & private \\
+    \hline
+    \texttt{char} & characterToGet & private \\
+    \hline
+    \texttt{uint32\_t} & glyphOffset & private \\
+    \hline
+    \texttt{uint32\_t} & glyphLength & private \\
     \hline
     \hline
     \textbf{Signature} & \textbf{Returns} & \textbf{Access} \\
     \hline
     \texttt{Font()} & Font & public \\
     \hline
-    \texttt{parse(std::string filename)} & void & public \\
+    \texttt{Font(std::string filename, char characterToGet)} & Font & public \\
     \hline
-    \texttt{glyphExists(char glyph)} & bool & public \\
-    \hline
-    \texttt{getGlyph(char glyph)} & Glyph* & public \\
-    \hline
-    \multicolumn{3}{|c|}{Plus many more private methods used for parsing...} \\
+    \texttt{readFont(std::string filename)} & void & private \\
     \hline
   \end{tabular}
 \end{center}
 
-\subsubsection{The table directory}
-This is at the beginning of the file; no offset is needed to find it. The first
-few bytes are magic numbers and version information that will be checked, to
-ensure that the file is in fact a TTF file. First, we check the initial 32 bits
-for the values \texttt{0x00010000} or \texttt{0x74727565}. These indicate that
-the file is a TTF font that should be processed using the standard scaler (what
-Apple calls the rasterizer). If this is not met, we will reject the file. Next,
-we parse the table of tables, starting at offset \texttt{0xC}, which contains a
-list of tables, alongside pointers to them, their length, and their checksums,
-to verify the integrity of the file. We will use a Dictionary system to store
-this data, with the table names as keys, and the values being a
-\texttt{TableData} class that contains the length, checksum, and data of each
-table.
+The most important section of this class is the \texttt{readFont} method. It is
+called in the constructor of the font, and does the following things:
+
+\begin{enumerate}
+\item Opens the file speficied by \texttt{filename}.
+\item Reads that file into the \texttt{data} variable in memory.
+\item Parses the header of the font to get the offsets of the tables.
+\item Parses the HEAD table into the the \texttt{head} variable.
+\item Parses the CMAP table into the \texttt{cmap} variable.
+\item Uses the \texttt{cmap} table to get the glyph index of the requested glyph.
+\item Looks up this glyph index in the \texttt{loca} table.
+\item Parses the glyph using that information. 
+\end{enumerate}
+
+This prepares the font to be passed to the renderer, where the public member
+\texttt{glyph} will be read by the renderer itself to draw the font to the screen.
+
+\subsubsection{Parsing Fonts}
+
+The TTF specification uses a number of different types of data, which must be
+parsed from a series of bytes. My project has a utility module that contains
+various functions to take a data array and an offset, and can return a requested
+data type from that data. For example, \texttt{parse16} will return a signed 16-bit
+integer parsed from the bytes after the offset given. These functions are used
+throughout the project, and the util module is included in nearly every file of
+the parsing system.
+
+\subsubsection{The Glyph Table}
+
+The core algorithm of the parsing section is the glyph parser. To save space,
+data in the glyph itself is not repeated, instead a special flag is set to tell
+the parser to repeat this data again. In addition, we must calculate when to
+switch from parsing x values to parsing y values, which requires special
+calculations to do. The algorithm in pseudocode is as follows:
+
+\begin{Verbatim}[numbers=left]
+Glyph::parse(data, offset, length):
+  numberOfContours = parse an unsigned 16bit integer at (offset)
+  xMin = parse an unsigned 16bit integer at (offset+2)
+  yMin = parse an unsigned 16bit integer at (offset+4)
+  xMax = parse an unsigned 16bit integer at (offset+6)
+  yMax = parse an unsigned 16bit integer at (offset+8)
+
+  if numberOfContours < 0:
+    abort() (compound glyphs are outside the scope of the program)
+
+  endPointsOfContours = empty vector
+  for (i = 0; i < numberOfContours; i++):
+    parse a 16bit integer at (offset+10+i*2) and append it to   \
+    endPointsOfContours
+
+  instructionOffset = offset+10+numberOfContours*2
+  instructionLength = parse an unsigned 16bit integer at
+                      (instructionOffset)
+
+  dataOffset = instructionOffset + instructionLength
+  currentOffset = dataOffset
+  
+  totalPoints = the last value of endPointsOfContours
+
+  flags = empty vector
+  xDeltas = empty vector
+  yDeltas = empty vector
+
+  currentOffset += 2
+  
+  while numberOfPoints < totalPoints:
+    construct a PointFlag at the currentOffset and append it to  \
+    the flags vector
+    numberOfPoints++
+    currentOffset++
+
+  currentOffset--
+
+  for each flag in flags:
+    xDelta = 0
+    if xShortVector is set in flag:
+      currentOffset++
+      xDelta = parse an unsigned 8bit integer at (currentOffset)
+      if sign is not set in flag:
+        xDelta = -xDelta
+    else:
+      if xSame is not set in flag:
+        currentOffset++
+        xDelta = parse a signed 16bit integer at (currentOffset)
+        currentOffset++
+      else: (if xSame is set)
+        xDelta = 0 
+    append xDelta to xDeltas
+
+  repeat the above loop for the yDeltas
+
+  for each i in range(length(xDeltas)):
+    point = (xDelta, yDelta, flag)
+    append point to points
+
+  return points
+\end{Verbatim}
+
+\todo{EXPLAIN THIS PROPERLY}
+
+\subsection{Rendering}
+
+The rendering system is comparitively much simpler. We take the points array
+returned by the algorithm above, and draw it to the screen. To make this process
+simpler, we use a slightly modified version of the \texttt{sdl\_gfx} library.
+This library has been modified to allow for anti-aliased bezier curves, which
+previously the library did not support. 
+
+First, we iterate through the list of points to convert all of the delta values
+into absolute coordinates. During this process, we also insert phantom points
+between two off-curve points, to allow the drawing routine to look at the points
+in sets of two or three. Finally, we add the first point again at the end of the
+loop, to ensure that the loop gets closed.
+
+Now that we have prepared our final list of points, we iterate through each
+point, drawing either a line or a bezier curve (using the \texttt{sdl\_gfx}
+library functions) as required. These are drawn onto the back framebuffer, which
+is then made the active framebuffer (and displayed on the screen) with the call
+to \texttt{SDL\_RenderPresent} in \texttt{main()}.
+
+\chapter{Technical Solution}
+
+
 
 
 \end{document}
