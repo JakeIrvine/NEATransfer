@@ -1,0 +1,83 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}fstream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}filesystem\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/Font.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/log.h\PYGZdq{}}
+
+\PYG{n}{Font}\PYG{o}{::}\PYG{n}{Font}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Font}\PYG{o}{::}\PYG{n}{Font}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{filename}\PYG{p}{,} \PYG{k+kt}{char} \PYG{n}{characterToGet}\PYG{p}{)} \PYG{o}{:} \PYG{n}{filename}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{),} \PYG{n}{characterToGet}\PYG{p}{(}\PYG{n}{characterToGet}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Opening font: \PYGZdq{}}\PYG{p}{,} \PYG{n}{filename}\PYG{p}{);}
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZgt{} Looking for character: \PYGZdq{}}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{characterToGet}\PYG{p}{));}
+
+    \PYG{n}{readFont}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{Font}\PYG{o}{::}\PYG{n}{readFont}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{filename}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{ifstream} \PYG{n}{file} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ifstream}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{in} \PYG{o}{|} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{filesystem}\PYG{o}{::}\PYG{n}{path} \PYG{n}{path} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{filesystem}\PYG{o}{::}\PYG{n}{path}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{);}
+    \PYG{n}{fileLength} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{filesystem}\PYG{o}{::}\PYG{n}{file\PYGZus{}size}\PYG{p}{(}\PYG{n}{path}\PYG{p}{);}
+    \PYG{n}{data} \PYG{o}{=} \PYG{k}{new} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}}\PYG{p}{((}\PYG{n}{std}\PYG{o}{::}\PYG{n}{istreambuf\PYGZus{}iterator}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{file}\PYG{p}{)),} \PYG{n}{std}\PYG{o}{::}\PYG{n}{istreambuf\PYGZus{}iterator}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}}\PYG{p}{());}
+
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZgt{} Read \PYGZdq{}} \PYG{o}{+} \PYG{n}{std}\PYG{o}{::}\PYG{n}{to\PYGZus{}string}\PYG{p}{(}\PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{size}\PYG{p}{())} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} bytes.\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+
+    \PYG{c+c1}{// Parse the header! This is used to get the table offsets for the rest of the parsing.}
+    \PYG{n}{header} \PYG{o}{=} \PYG{n}{Header}\PYG{p}{(}\PYG{n}{data}\PYG{p}{);}
+
+    \PYG{n}{head} \PYG{o}{=} \PYG{n}{HEADTable}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{header}\PYG{p}{);}
+    \PYG{n}{cmap} \PYG{o}{=} \PYG{n}{CMAPTable}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{header}\PYG{p}{,} \PYG{n}{characterToGet}\PYG{p}{);}
+
+    \PYG{c+c1}{// So now, we\PYGZsq{}ve got the glyph index we want, and need to use the loca table to convert that into a glyph offset and length!}
+    \PYG{k}{auto} \PYG{n}{glyphOffsetAndLength} \PYG{o}{=} \PYG{n}{getGlyphOffset}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{header}\PYG{p}{,} \PYG{n}{head}\PYG{p}{,} \PYG{n}{cmap}\PYG{p}{.}\PYG{n}{glyphIndex}\PYG{p}{);}
+    \PYG{n}{glyphOffset} \PYG{o}{=} \PYG{n}{glyphOffsetAndLength}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+    \PYG{n}{glyphLength} \PYG{o}{=} \PYG{n}{glyphOffsetAndLength}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+
+    \PYG{c+c1}{// And now we need to actually parse the glyph!}
+    \PYG{n}{glyph} \PYG{o}{=} \PYG{n}{Glyph}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{glyphOffset}\PYG{p}{,} \PYG{n}{glyphLength}\PYG{p}{);}
+
+
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Mixing levels of abstraction = bad, I know, but parsing the loca table is too trivial to get it\PYGZsq{}s own class imo}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint32\PYGZus{}t}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{n}{getGlyphOffset}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{n}{Header} \PYG{n}{header}\PYG{p}{,} \PYG{n}{HEADTable} \PYG{n}{head}\PYG{p}{,} \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{glyphIndex}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Find the offset of the loca table}
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset} \PYG{o}{=} \PYG{n}{header}\PYG{p}{.}\PYG{n}{tables}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}loca\PYGZdq{}}\PYG{p}{].}\PYG{n}{tableOffset}\PYG{p}{;}
+
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Glyph Index: \PYGZdq{}}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{to\PYGZus{}string}\PYG{p}{(}\PYG{n}{glyphIndex}\PYG{p}{));}
+
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{glyphPointerMultiplier} \PYG{o}{=} \PYG{n}{head}\PYG{p}{.}\PYG{n}{indexToLocFormat} \PYG{o}{?} \PYG{l+m+mi}{1} \PYG{o}{:} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{c+c1}{// why is the spec life this :(}
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{glyphPointerSize} \PYG{o}{=} \PYG{n}{head}\PYG{p}{.}\PYG{n}{indexToLocFormat} \PYG{o}{?} \PYG{l+m+mi}{4} \PYG{o}{:} \PYG{l+m+mi}{2}\PYG{p}{;}
+
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{locaOffset} \PYG{o}{=} \PYG{n}{offset} \PYG{o}{+} \PYG{n}{glyphIndex}\PYG{o}{*}\PYG{n}{glyphPointerSize}\PYG{p}{;}
+
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{glyphOffset}\PYG{p}{;}
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{nextGlyphOffset}\PYG{p}{;}
+
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{glyphPointerSize} \PYG{o}{==} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{glyphOffset} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{locaOffset}\PYG{p}{);}
+        \PYG{n}{nextGlyphOffset} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{locaOffset}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{);}
+
+    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{n}{glyphOffset} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{locaOffset}\PYG{p}{);}
+        \PYG{n}{nextGlyphOffset} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{locaOffset}\PYG{o}{+}\PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{n}{glyphOffset} \PYG{o}{*=} \PYG{n}{glyphPointerMultiplier}\PYG{p}{;}
+    \PYG{n}{nextGlyphOffset} \PYG{o}{*=} \PYG{n}{glyphPointerMultiplier}\PYG{p}{;}
+
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{length} \PYG{o}{=} \PYG{n}{nextGlyphOffset} \PYG{o}{\PYGZhy{}} \PYG{n}{glyphOffset}\PYG{p}{;}
+
+    \PYG{n}{glyphOffset} \PYG{o}{+=} \PYG{n}{header}\PYG{p}{.}\PYG{n}{tables}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}glyf\PYGZdq{}}\PYG{p}{].}\PYG{n}{tableOffset}\PYG{p}{;}
+
+    \PYG{c+c1}{// huh okay that was less trivial than I expected}
+    \PYG{k}{return} \PYG{n}{std}\PYG{o}{::}\PYG{n}{pair}\PYG{p}{(}\PYG{n}{glyphOffset}\PYG{p}{,} \PYG{n}{length}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Font}\PYG{o}{::\PYGZti{}}\PYG{n}{Font}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

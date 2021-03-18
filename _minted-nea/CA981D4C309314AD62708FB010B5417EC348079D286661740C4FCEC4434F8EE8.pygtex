@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cmake\PYGZus{}minimum\PYGZus{}required}\PYG{p}{(}\PYG{l+s}{VERSION} \PYG{l+s}{3.15}\PYG{p}{)}
+\PYG{n+nb}{project}\PYG{p}{(}\PYG{l+s}{NEA}\PYG{p}{)}
+\PYG{n+nb}{list}\PYG{p}{(}\PYG{l+s}{APPEND} \PYG{l+s}{CMAKE\PYGZus{}MODULE\PYGZus{}PATH} \PYG{o}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{CMAKE\PYGZus{}CURRENT\PYGZus{}SOURCE\PYGZus{}DIR}\PYG{o}{\PYGZcb{}}\PYG{p}{)}
+\PYG{n+nb}{set}\PYG{p}{(}\PYG{l+s}{CMAKE\PYGZus{}CXX\PYGZus{}STANDARD} \PYG{l+s}{17}\PYG{p}{)}
+
+\PYG{n+nb}{find\PYGZus{}package}\PYG{p}{(}\PYG{l+s}{SDL2} \PYG{l+s}{REQUIRED}\PYG{p}{)}
+\PYG{c}{\PYGZsh{}find\PYGZus{}package(SDL2\PYGZus{}gfx REQUIRED)}
+
+\PYG{n+nb}{include\PYGZus{}directories}\PYG{p}{(}\PYG{o}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{SDL2\PYGZus{}INCLUDE\PYGZus{}DIRS}\PYG{o}{\PYGZcb{}}\PYG{p}{)}
+
+\PYG{n+nb}{add\PYGZus{}executable}\PYG{p}{(}\PYG{l+s}{NEA} \PYG{l+s}{SDL\PYGZus{}gfx/SDL2\PYGZus{}gfxPrimitives.c} \PYG{l+s}{SDL\PYGZus{}gfx/SDL2\PYGZus{}gfxPrimitives.h} \PYG{l+s}{src/main.cpp} \PYG{l+s}{src/Font.cpp} \PYG{l+s}{include/Font.h} \PYG{l+s}{src/Header.cpp} \PYG{l+s}{include/Header.h} \PYG{l+s}{src/util.cpp} \PYG{l+s}{include/util.h} \PYG{l+s}{src/TableHeader.cpp} \PYG{l+s}{include/TableHeader.h} \PYG{l+s}{src/HEADTable.cpp} \PYG{l+s}{include/HEADTable.h} \PYG{l+s}{src/CMAPTable.cpp} \PYG{l+s}{include/CMAPTable.h} \PYG{l+s}{src/Glyph.cpp} \PYG{l+s}{include/Glyph.h} \PYG{l+s}{src/PointFlag.cpp} \PYG{l+s}{include/PointFlag.h} \PYG{l+s}{src/Point.cpp} \PYG{l+s}{include/Point.h}  \PYG{l+s}{SDL\PYGZus{}gfx/SDL2\PYGZus{}rotozoom.c} \PYG{l+s}{SDL\PYGZus{}gfx/SDL2\PYGZus{}rotozoom.h} \PYG{l+s}{src/log.cpp} \PYG{l+s}{include/log.h}\PYG{p}{)}
+
+\PYG{n+nb}{target\PYGZus{}link\PYGZus{}libraries}\PYG{p}{(}\PYG{l+s}{NEA} \PYG{o}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{SDL2\PYGZus{}LIBRARY}\PYG{o}{\PYGZcb{}}\PYG{p}{)}
+\end{Verbatim}

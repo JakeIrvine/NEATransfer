@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 04/12/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}ifndef NEA\PYGZus{}POINT\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NEA\PYGZus{}POINT\PYGZus{}H}
+
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}PointFlag.h\PYGZdq{}}
+
+\PYG{k}{class} \PYG{n+nc}{Point} \PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+    \PYG{n}{Point}\PYG{p}{();}
+    \PYG{n}{Point}\PYG{p}{(}\PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaX}\PYG{p}{,} \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaY}\PYG{p}{,} \PYG{n}{PointFlag} \PYG{n}{flag}\PYG{p}{);}
+
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaX}\PYG{p}{;}
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaY}\PYG{p}{;}
+
+    \PYG{n}{PointFlag} \PYG{n}{flag}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+
+\PYG{c+cp}{\PYGZsh{}endif }\PYG{c+c1}{//NEA\PYGZus{}POINT\PYGZus{}H}
+\end{Verbatim}

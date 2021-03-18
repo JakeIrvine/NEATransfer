@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by kernel on 16/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}ifndef NEA\PYGZus{}GLYPH\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NEA\PYGZus{}GLYPH\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cstdint\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}Point.h\PYGZdq{}}
+
+\PYG{k}{class} \PYG{n+nc}{Glyph} \PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+    \PYG{n}{Glyph}\PYG{p}{();}
+    \PYG{n}{Glyph}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{length}\PYG{p}{);}
+
+    \PYG{k+kt}{void} \PYG{n+nf}{parse}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{length}\PYG{p}{);}
+
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{numberOfContours}\PYG{p}{;}
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{xMin}\PYG{p}{;}
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{yMin}\PYG{p}{;}
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{xMax}\PYG{p}{;}
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{yMax}\PYG{p}{;}
+
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint16\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{n}{endPointsOfContours}\PYG{p}{;}
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{instructionLength}\PYG{p}{;}
+
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{};}
+
+
+\PYG{c+cp}{\PYGZsh{}endif }\PYG{c+c1}{//NEA\PYGZus{}GLYPH\PYGZus{}H}
+\end{Verbatim}

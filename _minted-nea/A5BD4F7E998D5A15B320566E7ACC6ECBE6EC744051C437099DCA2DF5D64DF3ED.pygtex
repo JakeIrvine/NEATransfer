@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 25/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}ifndef NEA\PYGZus{}POINTFLAG\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NEA\PYGZus{}POINTFLAG\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cstdint\PYGZgt{}}
+
+\PYG{k}{class} \PYG{n+nc}{PointFlag} \PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+    \PYG{n}{PointFlag}\PYG{p}{();}
+    \PYG{k}{explicit} \PYG{n+nf}{PointFlag}\PYG{p}{(}\PYG{k+kt}{uint8\PYGZus{}t} \PYG{n}{flagByte}\PYG{p}{);}
+    \PYG{n}{PointFlag}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset}\PYG{p}{);}
+
+    \PYG{k+kt}{bool} \PYG{n}{onCurvePoint}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{xShortVector}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{yShortVector}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{repeat}\PYG{p}{;}
+    \PYG{k+kt}{uint8\PYGZus{}t} \PYG{n}{repeatCount}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{xSame}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{ySame}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{overlapSimple}\PYG{p}{;}
+
+    \PYG{k+kt}{uint8\PYGZus{}t} \PYG{n}{flagByte}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+
+\PYG{c+cp}{\PYGZsh{}endif }\PYG{c+c1}{//NEA\PYGZus{}POINTFLAG\PYGZus{}H}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 14/12/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}ifndef NEA\PYGZus{}LOG\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NEA\PYGZus{}LOG\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{info}\PYG{p}{(}\PYG{k}{const} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{o}{\PYGZam{}} \PYG{n}{prompt}\PYG{p}{,} \PYG{k}{const} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{o}{\PYGZam{}} \PYG{n}{data}\PYG{p}{);}
+\PYG{k+kt}{void} \PYG{n+nf}{error}\PYG{p}{(}\PYG{k}{const} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{o}{\PYGZam{}} \PYG{n}{message}\PYG{p}{);}
+
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{itoh}\PYG{p}{(}\PYG{k+kt}{long} \PYG{n}{val}\PYG{p}{);}
+\PYG{c+cp}{\PYGZsh{}endif }\PYG{c+c1}{//NEA\PYGZus{}LOG\PYGZus{}H}
+\end{Verbatim}

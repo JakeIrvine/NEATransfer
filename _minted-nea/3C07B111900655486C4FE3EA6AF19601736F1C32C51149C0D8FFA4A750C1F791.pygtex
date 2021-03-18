@@ -1,0 +1,168 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/Font.h\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}SDL2/SDL.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../SDL\PYGZus{}gfx/SDL2\PYGZus{}gfxPrimitives.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{WIDTH} \PYG{o}{=} \PYG{l+m+mi}{400}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{HEIGHT} \PYG{o}{=} \PYG{l+m+mi}{400}\PYG{p}{;}
+
+\PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{SCALE} \PYG{o}{=} \PYG{l+m+mf}{0.1}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{drawFont}\PYG{p}{(}\PYG{n}{Font} \PYG{n}{font}\PYG{p}{,} \PYG{n}{SDL\PYGZus{}Renderer}\PYG{o}{*} \PYG{n}{renderer}\PYG{p}{);}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+    \PYG{n}{SDL\PYGZus{}Window}\PYG{o}{*} \PYG{n}{window} \PYG{o}{=} \PYG{k}{nullptr}\PYG{p}{;}		\PYG{c+c1}{// Create pointers for our window and renderer \PYGZhy{}\PYGZhy{} these will remain as null}
+    \PYG{n}{SDL\PYGZus{}Renderer}\PYG{o}{*} \PYG{n}{renderer} \PYG{o}{=} \PYG{k}{nullptr}\PYG{p}{;}   \PYG{c+c1}{// if window or renderer creation fails.}
+
+    \PYG{n}{SDL\PYGZus{}Init}\PYG{p}{(}\PYG{n}{SDL\PYGZus{}INIT\PYGZus{}VIDEO}\PYG{p}{);}			\PYG{c+c1}{// Attempt to initialize SDL}
+
+    \PYG{n}{window} \PYG{o}{=} \PYG{n}{SDL\PYGZus{}CreateWindow}\PYG{p}{(} \PYG{l+s}{\PYGZdq{}Font Renderer\PYGZdq{}}\PYG{p}{,}		\PYG{c+c1}{// Attempt to create the window...}
+                               \PYG{n}{SDL\PYGZus{}WINDOWPOS\PYGZus{}UNDEFINED}\PYG{p}{,}
+                               \PYG{n}{SDL\PYGZus{}WINDOWPOS\PYGZus{}UNDEFINED}\PYG{p}{,}
+                               \PYG{n}{WIDTH}\PYG{p}{,} \PYG{n}{HEIGHT}\PYG{p}{,}
+                               \PYG{n}{SDL\PYGZus{}WINDOW\PYGZus{}SHOWN} \PYG{p}{);}
+
+    \PYG{n}{renderer} \PYG{o}{=} \PYG{n}{SDL\PYGZus{}CreateRenderer}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{SDL\PYGZus{}RENDERER\PYGZus{}ACCELERATED}\PYG{p}{);}  \PYG{c+c1}{// ...and the renderer}
+
+    \PYG{c+c1}{// Render a white background}
+    \PYG{n}{SDL\PYGZus{}SetRenderDrawColor}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{);}
+    \PYG{n}{SDL\PYGZus{}RenderClear}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{);}
+
+    \PYG{k+kt}{char} \PYG{n}{characterToDraw} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}A\PYGZsq{}}\PYG{p}{;}
+
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{filename} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Roboto.TTF\PYGZdq{}}\PYG{p}{;}
+    \PYG{n}{Font} \PYG{n}{font} \PYG{o}{=} \PYG{n}{Font}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,} \PYG{n}{characterToDraw}\PYG{p}{);}	\PYG{c+c1}{// Create the font object (this will also parse the file)}
+
+
+    \PYG{k+kt}{bool} \PYG{n}{quit} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{c+c1}{// Do things here}
+    \PYG{k}{while}\PYG{p}{(}\PYG{o}{!}\PYG{n}{quit}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{SDL\PYGZus{}SetRenderDrawColor}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{);}
+        \PYG{n}{SDL\PYGZus{}RenderClear}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{);}		\PYG{c+c1}{// Clear the screen}
+
+        \PYG{n}{drawFont}\PYG{p}{(}\PYG{n}{font}\PYG{p}{,} \PYG{n}{renderer}\PYG{p}{);}  \PYG{c+c1}{// Render our font to the buffer}
+		\PYG{n}{SDL\PYGZus{}RenderPresent}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{);}	\PYG{c+c1}{// Show the buffer on the screen}
+		\PYG{n}{SDL\PYGZus{}StartTextInput}\PYG{p}{();}
+		\PYG{n}{SDL\PYGZus{}Event} \PYG{n}{ev}\PYG{p}{;}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{SDL\PYGZus{}PollEvent}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{ev}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{ev}\PYG{p}{.}\PYG{n}{type} \PYG{o}{==} \PYG{n}{SDL\PYGZus{}TEXTINPUT}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{characterToDraw} \PYG{o}{=} \PYG{n}{ev}\PYG{p}{.}\PYG{n}{text}\PYG{p}{.}\PYG{n}{text}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
+				\PYG{n}{font} \PYG{o}{=} \PYG{n}{Font}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,} \PYG{n}{characterToDraw}\PYG{p}{);}
+				\PYG{n}{SDL\PYGZus{}StopTextInput}\PYG{p}{();}
+				\PYG{n}{SDL\PYGZus{}StartTextInput}\PYG{p}{();} \PYG{c+c1}{// Restart text input to avoid any weird text editing stuff}
+			\PYG{p}{\PYGZcb{}}
+
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{ev}\PYG{p}{.}\PYG{n}{type} \PYG{o}{==} \PYG{n}{SDL\PYGZus{}QUIT}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{quit} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{n}{SDL\PYGZus{}DestroyRenderer}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{);}
+    \PYG{n}{SDL\PYGZus{}DestroyWindow}\PYG{p}{(}\PYG{n}{window}\PYG{p}{);}
+    \PYG{n}{SDL\PYGZus{}Quit}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{k+kt}{void} \PYG{n+nf}{drawFont}\PYG{p}{(}\PYG{n}{Font} \PYG{n}{font}\PYG{p}{,} \PYG{n}{SDL\PYGZus{}Renderer} \PYG{o}{*}\PYG{n}{renderer}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Pick a sensible place to start}
+	\PYG{k+kt}{double} \PYG{n}{locX} \PYG{o}{=} \PYG{l+m+mi}{1400}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{locY} \PYG{o}{=} \PYG{l+m+mi}{\PYGZhy{}2500}\PYG{p}{;}
+
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{endpoints} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+		\PYG{c+c1}{// If this point would be the last point of a contour, we need to not draw a line here.}
+		\PYG{c+c1}{// We add it the current index to the endpoints array so we know when not to draw a line.}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{find}\PYG{p}{(}\PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{endPointsOfContours}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{endPointsOfContours}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),} \PYG{n}{i}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{endPointsOfContours}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+			\PYG{n}{endpoints}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());}
+		\PYG{p}{\PYGZcb{}}
+
+		\PYG{n}{Point}\PYG{o}{*} \PYG{n}{thisPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{points}\PYG{p}{.}\PYG{n}{at}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+		\PYG{n}{Point}\PYG{o}{*} \PYG{n}{nextPoint} \PYG{o}{=} \PYG{k}{nullptr}\PYG{p}{;}
+		\PYG{k}{try} \PYG{p}{\PYGZob{}}
+			\PYG{n}{nextPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{points}\PYG{p}{.}\PYG{n}{at}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{catch} \PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{out\PYGZus{}of\PYGZus{}range} \PYG{o}{\PYGZam{}}\PYG{n}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{nextPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{font}\PYG{p}{.}\PYG{n}{glyph}\PYG{p}{.}\PYG{n}{points}\PYG{p}{.}\PYG{n}{at}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);} \PYG{c+c1}{// If we\PYGZsq{}re at the last glyph, go back to the start}
+		\PYG{p}{\PYGZcb{}}
+
+		\PYG{c+c1}{// Insert the point}
+		\PYG{n}{locX} \PYG{o}{+=} \PYG{n}{thisPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX}\PYG{p}{;}
+		\PYG{n}{locY} \PYG{o}{+=} \PYG{n}{thisPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY}\PYG{p}{;}
+		\PYG{n}{points}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{locX}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{locY}\PYG{p}{,} \PYG{n}{thisPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{flag}\PYG{p}{);}
+
+
+
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{thisPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{onCurvePoint} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{onCurvePoint}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{c+c1}{// Insert a phantom point between the two}
+			\PYG{k}{auto} \PYG{n}{deltaX} \PYG{o}{=} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+			\PYG{k}{auto} \PYG{n}{deltaY} \PYG{o}{=} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+
+			\PYG{n}{points}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{locX}\PYG{o}{+}\PYG{n}{deltaX}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{locY}\PYG{o}{+}\PYG{n}{deltaY}\PYG{p}{),} \PYG{n}{PointFlag}\PYG{p}{(}\PYG{l+m+mb}{0b00000001}\PYG{p}{));}
+		\PYG{p}{\PYGZcb{}}
+
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{c+c1}{// Sort the points into contours}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{contours}\PYG{p}{;}
+
+	\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{maxI} \PYG{p}{:} \PYG{n}{endpoints}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Starting contour, will end at point \PYGZsh{}\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{maxI} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{currentContour} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+		\PYG{k+kt}{int} \PYG{n}{s} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{maxI}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Adding point \PYGZsh{}\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+			\PYG{n}{currentContour}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Readding point \PYGZsh{}\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{s} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{currentContour}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]);}
+		\PYG{n}{currentContour}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]);}
+		\PYG{n}{contours}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{currentContour}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Done adding points\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+
+	\PYG{c+c1}{// Draw each contour to the screen}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{contour} \PYG{p}{:} \PYG{n}{contours}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Starting new contour\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{contour}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{Point}\PYG{o}{*} \PYG{n}{currentPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{contour}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+			\PYG{n}{Point}\PYG{o}{*} \PYG{n}{controlPoint} \PYG{o}{=} \PYG{k}{nullptr}\PYG{p}{;}
+			\PYG{n}{Point}\PYG{o}{*} \PYG{n}{nextPoint}\PYG{p}{;}
+			\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{contour}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{onCurvePoint}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{controlPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{contour}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];}
+				\PYG{n}{nextPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{contour}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{];}
+				\PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{n}{nextPoint} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{contour}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];}
+			\PYG{p}{\PYGZcb{}}
+
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{controlPoint}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Drawing curve from (\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}) to (\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}).}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+				\PYG{k+kt}{double} \PYG{n}{pX}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{controlPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}
+				\PYG{p}{\PYGZcb{};}
+
+				\PYG{k+kt}{double} \PYG{n}{pY}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{controlPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,}
+						\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY}\PYG{p}{)} \PYG{o}{*} \PYG{n}{SCALE}
+				\PYG{p}{\PYGZcb{};}
+				\PYG{n}{aaBezierRGBA}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{,} \PYG{n}{pX}\PYG{p}{,} \PYG{n}{pY}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Drawing line from (\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}) to (\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}).}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+				\PYG{n}{aalineRGBA}\PYG{p}{(}\PYG{n}{renderer}\PYG{p}{,} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,} \PYG{n}{currentPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaX} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,} \PYG{n}{nextPoint}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{deltaY} \PYG{o}{*} \PYG{n}{SCALE}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 04/12/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/Point.h\PYGZdq{}}
+
+\PYG{n}{Point}\PYG{o}{::}\PYG{n}{Point}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{deltaX} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{deltaY} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Point}\PYG{o}{::}\PYG{n}{Point}\PYG{p}{(}\PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaX}\PYG{p}{,} \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{deltaY}\PYG{p}{,} \PYG{n}{PointFlag} \PYG{n}{flag}\PYG{p}{)} \PYG{o}{:} \PYG{n}{deltaX}\PYG{p}{(}\PYG{n}{deltaX}\PYG{p}{),} \PYG{n}{deltaY}\PYG{p}{(}\PYG{n}{deltaY}\PYG{p}{),} \PYG{n}{flag}\PYG{p}{(}\PYG{n}{flag}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

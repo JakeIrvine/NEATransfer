@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 09/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/Header.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/log.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+
+\PYG{n}{Header}\PYG{o}{::}\PYG{n}{Header}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{fontType} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{numTables} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{c+c1}{// skipping searchRange, entrySelector, rangeShift, they\PYGZsq{}re not relevant.}
+
+    \PYG{n}{tables} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{,} \PYG{n}{TableHeader}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZgt{} Enumerating tables...\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+
+    \PYG{c+c1}{// ok, now time to parse each table}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{offset}\PYG{o}{=}\PYG{l+m+mi}{12}\PYG{p}{;} \PYG{n}{offset} \PYG{o}{\PYGZlt{}} \PYG{n}{numTables}\PYG{o}{*}\PYG{l+m+mi}{16}\PYG{o}{+}\PYG{l+m+mi}{12}\PYG{p}{;} \PYG{n}{offset} \PYG{o}{+=} \PYG{l+m+mi}{16}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{auto} \PYG{n}{table} \PYG{o}{=} \PYG{n}{TableHeader}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{p}{);}
+        \PYG{n}{tables}\PYG{p}{[}\PYG{n}{table}\PYG{p}{.}\PYG{n}{tag}\PYG{p}{]} \PYG{o}{=} \PYG{n}{table}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// Print each table to the screen, because logging is important!}
+
+    \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{table} \PYG{p}{:} \PYG{n}{tables}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZgt{}\PYGZhy{}\PYGZgt{} Found table \PYGZdq{}} \PYG{o}{+} \PYG{n}{table}\PYG{p}{.}\PYG{n}{first} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} @ \PYGZdq{}} \PYG{o}{+} \PYG{n}{std}\PYG{o}{::}\PYG{n}{to\PYGZus{}string}\PYG{p}{(}\PYG{n}{table}\PYG{p}{.}\PYG{n}{second}\PYG{p}{.}\PYG{n}{tableOffset}\PYG{p}{),} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// And we\PYGZsq{}re done!}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

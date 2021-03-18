@@ -1,0 +1,58 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 09/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cstring\PYGZgt{}}
+
+\PYG{k+kt}{uint32\PYGZus{}t} \PYG{n+nf}{parseu32}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{val} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{uint32\PYGZus{}t}\PYG{p}{)} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{p}{);}
+    \PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8}\PYG{p}{;}
+    \PYG{n}{val} \PYG{o}{+=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8}\PYG{p}{;}
+    \PYG{n}{val} \PYG{o}{+=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{);}
+    \PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8}\PYG{p}{;}
+    \PYG{n}{val} \PYG{o}{+=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{p}{);}
+
+    \PYG{k}{return} \PYG{n}{val}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{uint16\PYGZus{}t} \PYG{n+nf}{parseu16}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{val} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{uint16\PYGZus{}t}\PYG{p}{)} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{p}{);}
+    \PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8}\PYG{p}{;}
+    \PYG{n}{val} \PYG{o}{+=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+    \PYG{k}{return} \PYG{n}{val}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{parseString}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{result} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{n}{offset}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{offset}\PYG{o}{+}\PYG{n}{length}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{result} \PYG{o}{+=} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{uint8\PYGZus{}t} \PYG{n}{parseu8}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{parse16}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+	\PYG{k}{auto} \PYG{n}{higher} \PYG{o}{=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{p}{);}
+	\PYG{k}{auto} \PYG{n}{lower} \PYG{o}{=} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+
+	\PYG{k}{auto} \PYG{n}{val} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{uint16\PYGZus{}t}\PYG{p}{)} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{p}{);}
+    \PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8}\PYG{p}{;}
+    \PYG{n}{val} \PYG{o}{|=} \PYG{p}{(}\PYG{k+kt}{uint16\PYGZus{}t}\PYG{p}{)} \PYG{n}{data}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+    \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{result}\PYG{p}{;}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{memcpy}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{result}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{val}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{);} \PYG{c+c1}{// Copy two bytes of memory from val \PYGZhy{}\PYGZgt{} result}
+    \PYG{c+c1}{// We need to do this because leftshifting a signed integer is UB and c++ doesn\PYGZsq{}t want to reinterpret it}
+
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

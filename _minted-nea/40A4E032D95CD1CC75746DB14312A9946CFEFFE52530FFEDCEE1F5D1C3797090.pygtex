@@ -1,0 +1,121 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 16/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/Glyph.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/log.h\PYGZdq{}}
+
+\PYG{n}{Glyph}\PYG{o}{::}\PYG{n}{Glyph}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{length}\PYG{p}{)} \PYG{o}{:} \PYG{n}{points}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{parse}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{p}{,} \PYG{n}{length}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Glyph}\PYG{o}{::}\PYG{n}{Glyph}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{Glyph}\PYG{o}{::}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{offset}\PYG{p}{,} \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// The number of contours in the glyph}
+    \PYG{n}{numberOfContours} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{p}{);}
+    \PYG{n}{xMin} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{);}
+    \PYG{n}{yMin} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{n}{xMax} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{6}\PYG{p}{);}
+    \PYG{n}{yMax} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{8}\PYG{p}{);}
+
+    \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}numberOfContours: \PYGZdq{}}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{to\PYGZus{}string}\PYG{p}{(}\PYG{n}{numberOfContours}\PYG{p}{));}
+
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{numberOfContours} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{// Compound glyph, out of the scope of the program}
+        \PYG{n}{abort}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{n}{endPointsOfContours} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{numberOfContours}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{endPointsOfContours}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{10}\PYG{o}{+}\PYG{p}{(}\PYG{n}{i}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)));}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{instructionLengthOffset} \PYG{o}{=} \PYG{n}{offset} \PYG{o}{+} \PYG{l+m+mi}{10} \PYG{o}{+} \PYG{n}{numberOfContours}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{;}
+
+    \PYG{n}{instructionLength} \PYG{o}{=} \PYG{n}{parseu16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{instructionLengthOffset}\PYG{p}{);}
+
+    \PYG{c+c1}{// Skip the instructions, they\PYGZsq{}re not used here}
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{dataOffset} \PYG{o}{=} \PYG{n}{instructionLengthOffset} \PYG{o}{+} \PYG{n}{instructionLength}\PYG{p}{;}
+    \PYG{k+kt}{uint32\PYGZus{}t} \PYG{n}{currentOffset} \PYG{o}{=} \PYG{n}{dataOffset}\PYG{p}{;}
+
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{totalPoints} \PYG{o}{=} \PYG{n}{endPointsOfContours}\PYG{p}{.}\PYG{n}{back}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{uint16\PYGZus{}t} \PYG{n}{numberOfPoints} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{PointFlag}\PYG{o}{\PYGZgt{}} \PYG{n}{flags} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int16\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{n}{xDeltas} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int16\PYGZus{}t}\PYG{o}{\PYGZgt{}} \PYG{n}{yDeltas} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{};}
+
+    \PYG{c+c1}{// THE BIGGER ALGORITHM}
+
+    \PYG{c+c1}{// Attempt to read each flag}
+	\PYG{n}{currentOffset}\PYG{o}{+=}\PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{numberOfPoints} \PYG{o}{\PYGZlt{}} \PYG{n}{totalPoints}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{flags}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{PointFlag}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{currentOffset}\PYG{p}{));} \PYG{c+c1}{// kinda cool that we can just pass stuff like this}
+        \PYG{n}{numberOfPoints} \PYG{o}{+=} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{currentOffset}\PYG{o}{++}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}} \PYG{c+c1}{// TODO: handle repeating?}
+
+    \PYG{n}{currentOffset} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
+
+    \PYG{c+c1}{// Parse the X values}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{flag} \PYG{p}{:} \PYG{n}{flags}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{xDelta}\PYG{p}{;}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{xShortVector}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{currentOffset}\PYG{o}{++}\PYG{p}{;}
+            \PYG{k+kt}{bool} \PYG{n}{sign} \PYG{o}{=} \PYG{n}{flag}\PYG{p}{.}\PYG{n}{xSame}\PYG{p}{;}
+            \PYG{c+c1}{// Read the single byte of the vector}
+            \PYG{n}{xDelta} \PYG{o}{=} \PYG{n}{parseu8}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{currentOffset}\PYG{p}{);}
+            \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{sign}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// If the sign is negative, invert the delta}
+                \PYG{n}{xDelta} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{xDelta}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{xSame}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{currentOffset} \PYG{o}{+=}\PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{n}{xDelta} \PYG{o}{=} \PYG{n}{parse16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{currentOffset}\PYG{p}{);}
+				\PYG{n}{currentOffset} \PYG{o}{+=}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+            \PYG{k}{else}
+				\PYG{n}{xDelta} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{//lastX;}
+		\PYG{p}{\PYGZcb{}}
+
+        \PYG{n}{xDeltas}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{xDelta}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// This might just be valid!}
+
+    \PYG{c+c1}{// Parse the Y values}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{flag} \PYG{p}{:} \PYG{n}{flags}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int16\PYGZus{}t} \PYG{n}{yDelta}\PYG{p}{;}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{yShortVector}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{currentOffset}\PYG{o}{++}\PYG{p}{;}
+            \PYG{k+kt}{bool} \PYG{n}{sign} \PYG{o}{=} \PYG{n}{flag}\PYG{p}{.}\PYG{n}{ySame}\PYG{p}{;}
+            \PYG{c+c1}{// Read the single byte of the vector}
+            \PYG{n}{yDelta} \PYG{o}{=} \PYG{n}{parseu8}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{currentOffset}\PYG{p}{);}
+            \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{sign}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// If the sign is negative, invert the delta}
+                \PYG{n}{yDelta} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{yDelta}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{flag}\PYG{p}{.}\PYG{n}{ySame}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{currentOffset} \PYG{o}{+=}\PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{n}{yDelta} \PYG{o}{=} \PYG{n}{parse16}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{currentOffset}\PYG{p}{);}
+				\PYG{n}{currentOffset} \PYG{o}{+=}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{else}
+				\PYG{n}{yDelta} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{//lastY;}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{n}{yDeltas}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{yDelta}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{xDeltas}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{points}\PYG{p}{.}\PYG{n}{emplace\PYGZus{}back}\PYG{p}{(}\PYG{n}{xDeltas}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{yDeltas}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{flags}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

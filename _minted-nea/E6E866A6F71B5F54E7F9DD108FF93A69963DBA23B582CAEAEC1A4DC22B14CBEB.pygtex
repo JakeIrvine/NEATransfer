@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//}
+\PYG{c+c1}{// Created by jake on 09/11/2020.}
+\PYG{c+c1}{//}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/TableHeader.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+
+
+\PYG{n}{TableHeader}\PYG{o}{::}\PYG{n}{TableHeader}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{uint8\PYGZus{}t}\PYG{o}{\PYGZgt{}*} \PYG{n}{data}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{offset}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{tag} \PYG{o}{=} \PYG{n}{parseString}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{n}{checksum} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{n}{tableOffset} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{8}\PYG{p}{);}
+    \PYG{n}{length} \PYG{o}{=} \PYG{n}{parseu32}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{offset}\PYG{o}{+}\PYG{l+m+mi}{12}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{TableHeader}\PYG{o}{::}\PYG{n}{TableHeader}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

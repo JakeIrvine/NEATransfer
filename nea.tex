@@ -6,8 +6,10 @@
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{fancyvrb}
+\usepackage{minted}
 \usepackage{textcomp}
 \usepackage{bytefield}
+\usepackage{etoc}
 \graphicspath{ {./img/} }
 \begin{document}
 
@@ -231,8 +233,8 @@ responsible for forming individual glyphs into words and pages. A layout engine
 still needs to reference the original font file, as kerning information which
 dictates the individual spacing between characters is stored in a table there.
 
-font file \rightarrow parser \rightarrow cache \rightarrow hinting \rightarrow
-rendering \rightarrow anti-aliasing \rightarrow layout
+font file $\rightarrow$ parser $\rightarrow$ cache $\rightarrow$ hinting $\rightarrow$
+rendering $\rightarrow$ anti-aliasing $\rightarrow$ layout
 
 
 \subsection{The TrueType Format}
@@ -568,7 +570,108 @@ to \texttt{SDL\_RenderPresent} in \texttt{main()}.
 
 \chapter{Technical Solution}
 
+\localtableofcontents
 
+\section{cmakelists.txt}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines]{cmake}{/home/jake/TTFParser/CMakeLists.txt}
+
+\section{main.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines, tabsize=4]{cpp}{/home/jake/TTFParser/src/main.cpp}
+
+\section{util.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/util.h}
+\section{util.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/util.cpp}
+\section{Font.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines, tabsize=4]{cpp}{/home/jake/TTFParser/include/Font.h}
+\section{Font.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/Font.cpp}
+
+\section{Header.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/Header.h}
+
+\section{Header.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/Header.cpp}
+
+\section{CMAPTable.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/CMAPTable.h}
+
+\section{CMAPTable.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/CMAPTable.cpp}
+
+\section{HEADTable.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/HEADTable.h}
+
+\section{HEADTable.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/HEADTable.cpp}
+
+\section{Glyph.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/Glyph.h}
+
+\section{Glyph.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/Glyph.cpp}
+
+\section{Point.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/Point.h}
+
+\section{Point.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/Point.cpp}
+
+\section{PointFlag.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/PointFlag.h}
+\section{PointFlag.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/PointFlag.cpp}
+\section{TableHeader.h}
+  \inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+  tabsize=4]{cpp}{/home/jake/TTFParser/include/TableHeader.h}
+\section{TableHeader.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/TableHeader.cpp}
+
+\section{log.h}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/include/log.h}
+
+\section{log.cpp}
+\inputminted[linenos, frame=lines, framesep=2mm, breaklines,
+tabsize=4]{cpp}{/home/jake/TTFParser/src/log.cpp}
+
+
+\chapter{Testing}
+
+To test the project I used a number of different methods to test my code. During
+the intial programming of the technical solution, I used a debugger to directly
+step through the code, along with directly modifying the code to print debugging
+information to the console. I also compared the values various parts of my
+program produced with the values produced by Freetype, another font rendering
+system described in the analysis section. Once the solution had been completed,
+I tested by running the code with a variety of inputs, and visually comparing
+the output to reference images.
+
+\subsection{Debugging}
+For most of the programming work on this project I used the IDE CLion.
+\begin{center}
+  \includegraphics[width=12cm]{ide}
+  \end{center}
+This is a highly sophisticated IDE that has many features that make developing
+C++ programs easier. The most useful of these is the visual debugger. This
+allows you to 
+\chapter{Evaluation}
 
 
 \end{document}
