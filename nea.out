@@ -1,42 +1,43 @@
 \BOOKMARK [0][-]{chapter.1}{Analysis}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Project Scope}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Existing Solutions}{chapter.1}% 3
-\BOOKMARK [2][-]{subsection.1.2.1}{SDL\137ttf}{section.1.2}% 4
-\BOOKMARK [2][-]{subsection.1.2.2}{freetype}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.3}{Quartz}{section.1.2}% 6
-\BOOKMARK [1][-]{section.1.3}{Project Background}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.3.1}{Domain Terminology}{section.1.3}% 8
-\BOOKMARK [2][-]{subsection.1.3.2}{Bezier Curves}{section.1.3}% 9
-\BOOKMARK [2][-]{subsection.1.3.3}{The Font Pipeline}{section.1.3}% 10
-\BOOKMARK [2][-]{subsection.1.3.4}{The TrueType Format}{section.1.3}% 11
-\BOOKMARK [1][-]{section.1.4}{Project Objectives}{chapter.1}% 12
-\BOOKMARK [0][-]{chapter.2}{Design}{}% 13
-\BOOKMARK [1][-]{section.2.1}{High Level Design}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.1.1}{The Parser}{section.2.1}% 15
-\BOOKMARK [2][-]{subsection.2.1.2}{Rendering}{section.2.1}% 16
-\BOOKMARK [0][-]{chapter.3}{Technical Solution}{}% 17
-\BOOKMARK [1][-]{section.3.1}{cmakelists.txt}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.2}{main.cpp}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.3}{util.h}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.4}{util.cpp}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.5}{Font.h}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.6}{Font.cpp}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.7}{Header.h}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.8}{Header.cpp}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.9}{CMAPTable.h}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.10}{CMAPTable.cpp}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.11}{HEADTable.h}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.12}{HEADTable.cpp}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.13}{Glyph.h}{chapter.3}% 30
-\BOOKMARK [1][-]{section.3.14}{Glyph.cpp}{chapter.3}% 31
-\BOOKMARK [1][-]{section.3.15}{Point.h}{chapter.3}% 32
-\BOOKMARK [1][-]{section.3.16}{Point.cpp}{chapter.3}% 33
-\BOOKMARK [1][-]{section.3.17}{PointFlag.h}{chapter.3}% 34
-\BOOKMARK [1][-]{section.3.18}{PointFlag.cpp}{chapter.3}% 35
-\BOOKMARK [1][-]{section.3.19}{TableHeader.h}{chapter.3}% 36
-\BOOKMARK [1][-]{section.3.20}{TableHeader.cpp}{chapter.3}% 37
-\BOOKMARK [1][-]{section.3.21}{log.h}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.22}{log.cpp}{chapter.3}% 39
-\BOOKMARK [0][-]{chapter.4}{Testing}{}% 40
-\BOOKMARK [1][-]{subsection.4.0.1}{Debugging}{chapter.4}% 41
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 42
+\BOOKMARK [1][-]{section.1.1}{Project Background}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Domain Terminology}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Parsing}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Bezier Curves}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{The Font Pipeline}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.5}{The TrueType Format}{section.1.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Existing Solutions}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.2.1}{freetype}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.2}{SDL\137ttf}{section.1.2}% 10
+\BOOKMARK [2][-]{subsection.1.2.3}{Quartz}{section.1.2}% 11
+\BOOKMARK [1][-]{section.1.3}{User Feedback}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.4}{Project Objectives}{chapter.1}% 13
+\BOOKMARK [0][-]{chapter.2}{Design}{}% 14
+\BOOKMARK [1][-]{section.2.1}{High Level Design}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.1.1}{The Parser}{section.2.1}% 16
+\BOOKMARK [2][-]{subsection.2.1.2}{Rendering}{section.2.1}% 17
+\BOOKMARK [0][-]{chapter.3}{Technical Solution}{}% 18
+\BOOKMARK [1][-]{section.3.1}{cmakelists.txt}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{main.cpp}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{util.h}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.4}{util.cpp}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.5}{Font.h}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.6}{Font.cpp}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.7}{Header.h}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.8}{Header.cpp}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.9}{CMAPTable.h}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.10}{CMAPTable.cpp}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.11}{HEADTable.h}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.12}{HEADTable.cpp}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.13}{Glyph.h}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.14}{Glyph.cpp}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.15}{Point.h}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.16}{Point.cpp}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.17}{PointFlag.h}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.18}{PointFlag.cpp}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.19}{TableHeader.h}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.20}{TableHeader.cpp}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.21}{log.h}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.22}{log.cpp}{chapter.3}% 40
+\BOOKMARK [0][-]{chapter.4}{Testing}{}% 41
+\BOOKMARK [1][-]{subsection.4.0.1}{Debugging}{chapter.4}% 42
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 43

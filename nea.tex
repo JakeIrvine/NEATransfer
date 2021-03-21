@@ -9,6 +9,7 @@
 \usepackage{minted}
 \usepackage{textcomp}
 \usepackage{bytefield}
+\usepackage{longtable}
 \usepackage{etoc}
 \graphicspath{ {./img/} }
 \begin{document}
@@ -23,9 +24,10 @@ Text is a key aspect of how we interact with machines. Virtually everything that
 is done on a computer requires some form of reading on a screen. The program
 that converts the binary text data to pixels on a screen is a `font engine' or
 `font rasterizer'. These take some text or a single character and output a
-texture which will get copied into the screen buffer. There is another component
-of font rendering, which arranges individual characters output by a font
-rasterizer into words or paragraphs, called a layout engine.
+texture (a collection of pixels) which will get copied into the screen buffer
+(which is then copied onto the display itself to be shown to the user). There is
+another component of font rendering, which arranges individual characters output
+by a font rasterizer into words or paragraphs, called a layout engine.
 
 Creating a full font engine is a very large task - the TrueType format (the
 industry standard for font files) is a very large specification, and can be
@@ -33,118 +35,42 @@ further enhanced by vendor-specific extensions. For example, some fonts contain
 small programs inside them that adjust the actual glyphs to better fit the pixel
 grid of the screen. These are implemented in a custom virtual machine that is
 very complex and time consuming to create. However, when rendering characters at
-a large scale, the impact of these features is far less, yet still comes at a
-substancial performance cost.
+a large size, the impact of these features is far less, yet still comes at a
+substantial performance cost.
 
-My project has two parts: the parser and the renderer itself. The parser will
-take a TrueType font file and output the bezier curves of the selected
-character, by reading the binary file. This is non-trivial, because the TrueType
-format is relatively complex, and contains a lot of optional features (which
-this project will largely ignore, unless I have time left over). I will
+To show a font on the screen, we must accomplish two tasks: \textbf{Parsing},
+and \textbf{Rendering}. Parsing is the process of taking the raw font file
+(which is just a set of bits) and converting it into data structures that make
+it possible to access specific attributes or structures stored in the file. For
+example, a key step in parsing the font will be to divide the file up into a
+number of Glyph tables. Once this is done, the created data structures will be
+passed to the renderer, which will turn these structures into a bitmap (set of
+pixels) that is suitable for display on the screen.
+
+The parser will take a TrueType font file and output the bezier curves of the
+selected character, by reading the binary file. This is non-trivial, because the
+TrueType format is relatively complex, and contains a lot of optional features
+(which this project will largely ignore, unless I have time left over). I will
 investigate parser-combinator systems and either use that or create my own
 custom parser architecture.
 
 TrueType fonts are composed of straight line segments and bezier curves. These
-are primitives that are relatively easy to draw to the screen quickly, and are
-what the rendering portion of my project will involve. I will initially render
-at a high resolution, to avoid the need for anti-aliasing and reduce the
-possibility of artifacts (pixels out of place, etc) in the process. I will
-potentially implement some form of anti-aliasing at some point, depending on how
-well the rest of the project goes.
+are primitives that are relatively easy to draw to the screen quickly, using
+simple mathematical techniques. There are a number of additional options that
+can be implemented in the renderer, such as anti-aliasing, which smooths the
+sharp pixel edges of the shapes to make them appear smoother to the eye.
 
-\section{Project Scope}
-The TrueType format is very complex, and creating a full implementation is
-outside the scope of a NEA. For simplicity, I will focus on the most important
-part of the format: individual character glyphs. This avoids the need for
-parsing kerning data, ligatures, and other optional features that would be
-present in a full implementation. In addition, I will not implement the
-grid-fitting aspect of the specification, as this would require creating a
-virtual machine to run the instructions contained in the font.
+%\section{Project Scope}
+%The TrueType format is very complex, and creating a full implementation is
+%outside the scope of a NEA. For simplicity, I will focus on the most important
+%part of the format: individual character glyphs. This avoids the need for
+%parsing kerning data, ligatures, and other optional features that would be
+%present in a full implementation. In addition, I will not implement the
+%grid-fitting aspect of the specification, as this would require creating a
+%virtual machine to run the instructions contained in the font.
 
-\todo{add to this later as i find more stuff i can't do}
+%\todo{add to this later as i find more stuff i can't do}
 
-
-\section{Existing Solutions}
-
-Since we can see text on a screen, there are clearly several existing solutions
-to font rasterization. A few prominent examples are outlined below.
-
-\subsection{SDL\_ttf}
-SDL\_ttf is a ready to use library for rendering fonts to a texture using the
-SDL graphics library. Internally, it uses the freetype library, which is
-discussed below.
-
-Advantages:
-\begin{itemize}
-\item{Simple to integrate into (SDL) applications.}
-\item{Uses the freetype backend, which supports a wide range of font features.}
-\item{Can be compiled for any platform, due to the fact that it's written
-    using crossplatform libraries and C++.}    
-\end{itemize}
-
-Disadvantages:
-\begin{itemize}
-\item{Slower than using freetype alone, because it adds SDL bindings on top of
-    it.}
-\item{Can only render on the CPU, failing to take advantage of any GPU that may
-    be present.}
-\item{Since it uses SDL for rendering, it can be quite hard to use with a non
-    SDL project.}
-\item{Due to it's simple API, it fails to expose many advanced features of
-    freetype, that might be useful to a client.}
-\end{itemize}
-
-\subsection{freetype}
-Freetype is a free, open source font engine that is used in many large software
-projects, such as GNU/Linux, iOS and Postscript. It supports the vast majority
-of font features and formats, including little-used ones such as .FON files and
-X11 PCF fonts. However, due to this, it is very large, and rather slow.
-
-Advantages:
-\begin{itemize}
-\item{Can handle virtually any font format you may need.}
-\item{A full implementation of the TrueType specification, meaning it supports
-    all of the features of the specification, as well as a number of vendor
-    specific extensions.}
-\item{Will run on a wide variety of systems, including the 16-bit Atari and
-    Amiga computers.}
-\item{Supports a wide range of character encodings, including the full unicode
-    range of encodings, such as UTF-8 and UTF-16.}
-\end{itemize}
-
-Disadvantages:
-\begin{itemize}
-\item{Slow, due to it's support of the full specification.}
-\item{Has a large memory footprint, meaning there is less space available for
-    other programs.}
-\item{Has a relatively complex API, that can be harder to integrate into
-    applications already using a different font engine.}
-\item{It does not handle complex layouts, which may be useful for some users.}
-\end{itemize}
-
-\subsection{Quartz}
-Quartz is the font renderer used on MacOS and iOS devices, for almost all
-software. It uses subpixel positioning, which means each glyph doesn't have to
-be aligned with the pixel grid, instead being allowed to be anywhere between
-pixels, using subpixel rendering and anti-aliasing to properly handle this
-case.
-
-Whilst this can result in clearer display at high dpi resolutions, (such as
-Apple's retina displays), at lower dpi monitors or smaller font sizes it can
-result in harder to read text.
-
-Advantages:
-\begin{itemize}
-  \item{Provides the closest similarity to printed text when viewed on high DPI
-      displays. }
-  \item{Is included by default with MacOS and iOS}
-\end{itemize}
-
-Disadvantages:
-\begin{itemize}
-\item{Will only run on MacOS / iOS devices}
-\item{The subpixel grid can make fonts look blurry at low DPI monitors.}
-\end{itemize}
 \newpage
 \section{Project Background}
 
@@ -171,6 +97,14 @@ format that is indexed using the table directory at the start of the font file.
 For example, the \texttt{glyf} table stores the actual glyph data of the font,
 and the \texttt{cmap} table stores the mappings between character and glyph.
 
+\subsection{Parsing}
+As described above, parsing is the act of taking a text or binary sequence and
+transforming it into data structures that can be used later. There are several
+ways of doing this. Note that the process of parsing a font file is slightly
+different to that of parsing a programming language or other free-form format.
+Programming languages consist of a number of lines of code, whereas a font file
+is highly structured, with every section of the file having a specific role
+depending on it's position, (hereafter known as \textit{offset}).
 
 \subsection{Bezier Curves}
 Individual glyphs of a font are built up using \textit{outlines}, which are
@@ -246,13 +180,14 @@ full specification is available at
 \url{https://developer.apple.com/fonts/TrueType-Reference-Manual/}, which will
 be summarized here.
 
-A TrueType font is identified by the magic bytes (the first few bytes of many
-file formats are different to aid in distinguishing them) \texttt{0x00010000}.
-This is followed by a table directory which provides offsets to the various
-tables used in the file. Each table contains some information about how the font
-should be rendered, or metadata such as the font licence or author. For example,
-the \texttt{kern} table contains data related to font kerning, which controls
-the spacing between individual letters.
+The format is a \textit{binary} file, which means that we look at the file in
+terms of bytes, rather than in terms of characters and lines of text. The file
+is composed of a number of \textit{tables}, which are analoguous to chapters of
+a book. The file begins with the table directory, which is the table of contents
+for these chapters -- it contains their titles, along with where in the file
+they can be found. For example, the table directory may contain an entry for a
+table called \texttt{glyf}, which points to the area of the file that stores the
+glyph data for the font. 
 
 There are several mandatory tables, as shown below. More tables may exist in the
 file, but are optional, and may contain extensions to the format, or other data
@@ -333,17 +268,144 @@ into the \texttt{loca} table to get a glyph offset and length. Finally, we can
 use the offset and length to find the appropriate section of the \texttt{glyf}
 table, and get the glyph data itself.
 
+
+\section{Existing Solutions}
+
+Since we can see text on a screen, there are clearly several existing solutions
+to font rasterization. A few prominent examples are outlined below.
+
+
+
+\subsection{freetype}
+Freetype is a free, open source font engine that is used in many large software
+projects, such as GNU/Linux, iOS and Postscript. It supports the vast majority
+of font features and formats, including little-used ones such as .FON files and
+X11 PCF fonts. However, due to this, it is very large, and rather slow.
+
+Advantages:
+\begin{itemize}
+\item{Can handle virtually any font format you may need.}
+\item{A full implementation of the TrueType specification, meaning it supports
+    all of the features of the specification, as well as a number of vendor
+    specific extensions.}
+\item{Will run on a wide variety of systems, including the 16-bit Atari and
+    Amiga computers.}
+\item{Supports a wide range of character encodings, including the full unicode
+    range of encodings, such as UTF-8 and UTF-16.}
+\end{itemize}
+
+Disadvantages:
+\begin{itemize}
+\item{Slow, due to it's support of the full specification.}
+\item{Has a large memory footprint, meaning there is less space available for
+    other programs.}
+\item{Has a relatively complex API, that can be harder to integrate into
+    applications already using a different font engine.}
+\item{It does not handle complex layouts, which may be useful for some users.}
+\end{itemize}
+
+\subsection{SDL\_ttf}
+SDL\_ttf is a ready to use library for rendering fonts to a texture using the
+SDL graphics library. Internally, it uses the freetype library as discussed above.
+
+Advantages:
+\begin{itemize}
+\item{Simple to integrate into (SDL) applications.}
+\item{Uses the freetype backend, which supports a wide range of font features.}
+\item{Can be compiled for any platform, due to the fact that it's written
+    using crossplatform libraries and C++.}    
+\end{itemize}
+
+Disadvantages:
+\begin{itemize}
+\item{Slower than using freetype alone, because it adds SDL bindings on top of
+    it.}
+\item{Can only render on the CPU, failing to take advantage of any GPU that may
+    be present.}
+\item{Since it uses SDL for rendering, it can be quite hard to use with a non
+    SDL project.}
+\item{Due to it's simple API, it fails to expose many advanced features of
+    freetype, that might be useful to a client.}
+\end{itemize}
+
+\subsection{Quartz}
+Quartz is the font renderer used on MacOS and iOS devices, for almost all
+software. It uses subpixel positioning, which means each glyph doesn't have to
+be aligned with the pixel grid, instead being allowed to be anywhere between
+pixels, using subpixel rendering and anti-aliasing to properly handle this
+case.
+
+Whilst this can result in clearer display at high dpi resolutions, (such as
+Apple's retina displays), at lower dpi monitors or smaller font sizes it can
+result in harder to read text.
+
+Advantages:
+\begin{itemize}
+  \item{Provides the closest similarity to printed text when viewed on high DPI
+      displays. }
+  \item{Is included by default with MacOS and iOS}
+\end{itemize}
+
+Disadvantages:
+\begin{itemize}
+\item{Will only run on MacOS / iOS devices}
+\item{The subpixel grid can make fonts look blurry at low DPI monitors.}
+\end{itemize}
+
+\section{User Feedback}
+
+I consulted with a potential user of my project, to assist in determining what
+my priorities should be. They use computers for programming, revision, and
+entertainment, so they spend a lot of time looking at computer-generated text.
+Their responses are shown below in italics:
+
+Do you notice the speed of font rendering on your computer?
+
+\textit{Usually no, as most programs render at small resolutions. However, some
+  programs such as my PDF viewer (Zathura) take a very long time rendering fonts
+  when zoomed way in.}
+
+Do you notice the quality of font rendering on your computer?
+
+\textit{Usually it is perfectly fine, but occasionally kerning issues.}
+
+What features would you want from a typeface rendering system?
+
+\textit{Fast and accurate rendering, the ability to output SVGs, support for
+  common modern fonts, a good API for integrating into other libraries or
+  programs, compatibility with SDL/OpenGL libraries, debugging tools for viewing
+  path tracing.}
+
+Is speed a concern in a font renderer?
+
+\textit{Definitely. As soon as it becomes less-than-instant it becomes a
+  productivity bottleneck and can make navigating an operating system
+  frustrating.}
+
+Would you rather have increased speed of a font rendering system, or support of more advanced typographical features?
+
+\textit{A balance of both. Performance should be considered, but not over every other feature.}
+
+I used these responses along with my analysis above to determine what, and what
+priority, I should give to my objectives below. 
+
 \section{Project Objectives}
-\begin{enumerate}
-  \item{The program will parse TTF files correctly, extracting character and
-      glyph data from them.}
-  \item{The program will display single characters on the screen in a specified
-      font.}
-  \item{The program will display these characters in a reasonable amount of
-      time, say, not longer than a second (1000ms)}
-  \item{The program will anti-alias these characters for improved readability}
-  \item{The program will reject incorrectly formed TTF files in a safe manner}
-\end{enumerate}
+\begin{center}
+  \begin{longtable}{c|c|p{3cm}|p{6.5cm}}
+    \# & \textbf{Priority} & \textbf{Description} & \textbf{Reasoning} \\
+    \hline
+    1 & High & The system will accept correctly formed TTF files as input & The TrueType format has been chosen because it is the industry standard, and almost every font available today can be obtained in TTF format. It also has a rigid specification, and support from other font rendering systems. \\
+    \hline
+    2 & Medium & The system will reject files that do not exist, or are not correctly formed TTF files. & Cleanly handling errors is important for usability and stability. \\
+    \hline
+    3 & High & The system will correctly parse the tables \texttt{head}, \texttt{cmap}, \texttt{loca}, and \texttt{glyf} to read the font. & This is critical functionality, required for any displaying of any character from the font \\
+    \hline
+    4 & Low & The system will output information about the tables on stdout & This would be beneficial for both debugging purposes and to demonstrate how the internals of a font work \\
+    \hline
+    5 & High & The parser section of the system will output bezier curevs that can be sent to the renderer to display the font, or exposed via an API for use in some other application
+  \end{longtable}
+\end{center}
+
 
 \chapter{Design}
 \section{High Level Design}
