@@ -394,15 +394,62 @@ priority, I should give to my objectives below.
   \begin{longtable}{c|c|p{3cm}|p{6.5cm}}
     \# & \textbf{Priority} & \textbf{Description} & \textbf{Reasoning} \\
     \hline
-    1 & High & The system will accept correctly formed TTF files as input & The TrueType format has been chosen because it is the industry standard, and almost every font available today can be obtained in TTF format. It also has a rigid specification, and support from other font rendering systems. \\
+    1 & High & The system will accept correctly formed TTF files as input. & The TrueType format has been chosen because it is the industry standard, and almost every font available today can be obtained in TTF format. It also has a rigid specification, and support from other font rendering systems. \\
     \hline
     2 & Medium & The system will reject files that do not exist, or are not correctly formed TTF files. & Cleanly handling errors is important for usability and stability. \\
     \hline
-    3 & High & The system will correctly parse the tables \texttt{head}, \texttt{cmap}, \texttt{loca}, and \texttt{glyf} to read the font. & This is critical functionality, required for any displaying of any character from the font \\
+    3 & High & The system will correctly parse the tables \texttt{head}, \texttt{cmap}, \texttt{loca}, and \texttt{glyf} to read the font. & This is critical functionality, required for any displaying of any character from the font. \\
     \hline
-    4 & Low & The system will output information about the tables on stdout & This would be beneficial for both debugging purposes and to demonstrate how the internals of a font work \\
+    4 & Low & The system will output information about the tables on stdout. & This would be beneficial for both debugging purposes and to demonstrate how the internals of a font work. \\
     \hline
-    5 & High & The parser section of the system will output bezier curevs that can be sent to the renderer to display the font, or exposed via an API for use in some other application
+    5 & High & The parser section of the system will output bezier curevs that
+               can be sent to the renderer to display the font, or exposed via
+               an API for use in some other application. & Critical
+                                                           functionality that is
+                                                           required to display
+                                                           any fonts at all. \\
+    \hline
+    6 & High & The system will accept an ASCII character to be the glyph to be
+               parsed and eventually displayed. & This will be part of the
+                                                  demonstration of my renderer,
+                                                  which is additionally useful
+                                                  for testing \\
+    \hline
+    7 & Medium & The system will render fonts at large point-sizes quickly.
+                                                  & This is a key factor
+                                                    identified by the user
+                                                    consultation, as they said
+                                                    that their current solution
+                                                    was unacceptably slow. \\
+    \hline
+    8 & Medium & The rendering subsystem will render the curves given to it by
+                 the parser at a high readability and with anti-aliasing.
+                                                  & The readability of fonts is
+                                                    an area that is already
+                                                    covered well by existing
+                                                    solutions as discussed
+                                                    above, but simple
+                                                    readability improvements
+                                                    such as anti-aliasing are
+                                                    relatively simple to
+                                                    implement and make a
+                                                    large difference to the final
+                                                    output. \\
+    \hline
+    9 & Low & The system will export font outlines to SVG. & This is another
+                                                            feature identified
+                                                            in the user
+                                                            consultation, but
+                                                            due to time
+                                                            constraints I may
+                                                            not be able to
+                                                            implement it.
+                                                            However, I will try
+                                                            to design the
+                                                            program in such a
+                                                            way that adding it
+                                                            later will be simple. 
+
   \end{longtable}
 \end{center}
 
@@ -427,9 +474,26 @@ complex and requires sophisticated parsing to extract the data needed. In
 contrast, rendering bezier curves to the screen is a task is moderately simple,
 as the bezier curve is used frequently in computer graphics applications.
 
-I will program in C++, using the cmake build system, and use the SDL graphics
-library to display the rendered characters to the screen. Finally, I will use a
-slightly modified version of \texttt{sdl\_gfx} to make rendering the characters easier. 
+I have selected C++ as the programming language for this project, because I am
+familiar with it, and whilst it supports high-level concepts such as
+object-oriented programming, it is easy to modify variables at the byte level,
+which is needed for some parsing stages. I use the cmake build system, because
+it is integrated well into my tools (Intellij CLion). This makes compiling large
+C++ programs easier, and means I only need to recompile sections of my program
+that change, which will speed up developement times.
+
+I have also decided to use the SDL 2D graphics library to draw the curves and display the
+resulting image on the screen. I have used this library before, and it is both
+fast (it can be used in a mode that is GPU-accelerated) and easy to use. In
+addition, it means my library can be very easily integrated into any other SDL
+application. I will also use an additional library, \texttt{sdl\_gfx} to assist
+with rendering anti-aliased curves. Note that I am not using the standard
+version of the library -- instead, I am using a slightly modified version that
+supports rendering anti-aliased bezier curves.
+
+%I will program in C++, using the cmake build system, and use the SDL graphics
+%library to display the rendered characters to the screen. Finally, I will use a
+%slightly modified version of \texttt{sdl\_gfx} to make rendering the characters easier. 
 
 \subsection{The Parser}
 The parser needs to take the filename of a font, and by examining the associated
@@ -732,7 +796,25 @@ For most of the programming work on this project I used the IDE CLion.
   \end{center}
 This is a highly sophisticated IDE that has many features that make developing
 C++ programs easier. The most useful of these is the visual debugger. This
-allows you to 
+allows you to pause the program at any point, inspect and change the values of
+local and global variables, and generally get more of an understanding of how
+your program works.
+
+I used debugging extensively throughout this project, for a number of purposes.
+When I was first writing the various modules, I used debugging as a basic sanity
+check that my code was running. Because I was using C++, an unsafe language, I
+was directly manipulating pointers at times, which meant that a Segmentation
+Fault (when a program tries to read from invalid memory) could occur. The
+debugger catches this, and I can see the exact line at which the segfault
+occurs, which makes it significantly easier to identify and resolve the issue.
+
+\subsection{Unit Testing}
+
+Unit testing is the act of testing a program one unit at a time, so that you can
+be sure that if all units are working as expected, then hopefully the entire
+program is working as expected. To accomplish this I created my own sections of
+TTF files that would test 
+
 \chapter{Evaluation}
 
 

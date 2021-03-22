@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {1.4}Project Objectives}{10}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Design}{12}{chapter.2}%
 \contentsline {section}{\numberline {2.1}High Level Design}{12}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}The Parser}{12}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.1}The Parser}{13}{subsection.2.1.1}%
 \contentsline {subsubsection}{The \texttt {Font} class}{13}{section*.3}%
 \contentsline {subsubsection}{Parsing Fonts}{14}{section*.4}%
 \contentsline {subsubsection}{The Glyph Table}{15}{section*.5}%
