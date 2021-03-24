@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56.000454mm"
+   height="132.42638mm"
+   viewBox="0 0 56.000454 132.42638"
+   version="1.1"
+   id="svg2002"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="breakdown.svg"
+   inkscape:export-filename="/home/jake/NEATransfer/img/breakdownimg.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs1996" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-44.966105"
+     inkscape:cy="170.97751"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata1999">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-16.911493,-20.943273)">
+    <rect
+       style="fill:#5b6ee1;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2565"
+       width="13.622981"
+       height="19.938366"
+       x="17.811493"
+       y="21.843273"
+       ry="1.635265" />
+    <rect
+       style="fill:#639bff;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2569"
+       width="13.622981"
+       height="19.938366"
+       x="20.051203"
+       y="24.114613"
+       ry="1.635265" />
+    <rect
+       style="fill:#5fcde4;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2567"
+       width="13.622981"
+       height="19.938366"
+       x="22.290913"
+       y="26.38595"
+       ry="1.635265" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.54053px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="42.898323"
+       y="38.636662"
+       id="text2582"><tspan
+         sodipodi:role="line"
+         id="tspan2580"
+         x="42.898323"
+         y="38.636662"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;stroke-width:0.264583">Roboto.ttf</tspan></text>
+    <rect
+       style="fill:#5b6ee1;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2565-9"
+       width="13.622981"
+       height="19.938366"
+       x="22.290913"
+       y="54.366337"
+       ry="1.635265" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.54053px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="50.341049"
+       y="65.338104"
+       id="text2582-2"><tspan
+         sodipodi:role="line"
+         id="tspan2580-6"
+         x="50.341049"
+         y="65.338104"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'RobotoMono Nerd Font';-inkscape-font-specification:'RobotoMono Nerd Font';stroke-width:0.264583">cmap</tspan></text>
+    <rect
+       style="fill:#639bff;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2569-5"
+       width="13.622981"
+       height="19.938366"
+       x="22.290913"
+       y="80.994911"
+       ry="1.635265" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.54053px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="50.259613"
+       y="92.039551"
+       id="text2582-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan2580-6-4"
+         x="50.259613"
+         y="92.039551"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'RobotoMono Nerd Font';-inkscape-font-specification:'RobotoMono Nerd Font';stroke-width:0.264583">loca</tspan></text>
+    <rect
+       style="fill:#5fcde4;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2567-0"
+       width="13.622981"
+       height="19.938366"
+       x="22.290913"
+       y="107.01444"
+       ry="1.635265" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.54053px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="50.275581"
+       y="118.741"
+       id="text2582-2-3-4"><tspan
+         sodipodi:role="line"
+         id="tspan2580-6-4-7"
+         x="50.275581"
+         y="118.741"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'RobotoMono Nerd Font';-inkscape-font-specification:'RobotoMono Nerd Font';stroke-width:0.264583">glyf</tspan></text>
+    <rect
+       style="fill:#cbdbfc;stroke:#000000;stroke-width:1.8;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect2567-0-0"
+       width="13.622981"
+       height="19.938366"
+       x="22.290913"
+       y="132.53128"
+       ry="1.635265" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.54053px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="52.2173"
+       y="145.44244"
+       id="text2582-2-3-4-4"><tspan
+         sodipodi:role="line"
+         id="tspan2580-6-4-7-1"
+         x="52.2173"
+         y="145.44244"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'RobotoMono Nerd Font';-inkscape-font-specification:'RobotoMono Nerd Font';stroke-width:0.264583">...</tspan></text>
+  </g>
+</svg>

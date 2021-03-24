@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.3.13)  21 MAR 2021 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.12.9)  23 MAR 2021 17:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -556,13 +556,83 @@ LaTeX Info: Redefining \] on input line 2924.
 \WF@everypar=\toks35
 Package: wrapfig 2003/01/31  v 3.6
 )
+(/usr/share/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count302
+\mult@box=\box61
+\multicol@leftmargin=\dimen264
+\c@unbalance=\count303
+\c@collectmore=\count304
+\doublecol@number=\count305
+\multicoltolerance=\count306
+\multicolpretolerance=\count307
+\full@width=\dimen265
+\page@free=\dimen266
+\premulticols=\dimen267
+\postmulticols=\dimen268
+\multicolsep=\skip56
+\multicolbaselineskip=\skip57
+\partial@page=\box62
+\last@line=\box63
+\maxbalancingoverflow=\dimen269
+\mult@rightbox=\box64
+\mult@grightbox=\box65
+\mult@gfirstbox=\box66
+\mult@firstbox=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\c@minrows=\count308
+\c@columnbadness=\count309
+\c@finalcolumnbadness=\count310
+\last@try=\dimen270
+\multicolovershoot=\dimen271
+\multicolundershoot=\dimen272
+\mult@nat@firstbox=\box105
+\colbreak@box=\box106
+\mc@col@check@num=\count311
+)
 (/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count302
+\FV@CodeLineNo=\count312
 \FV@InFile=\read3
-\FV@TabBox=\box61
-\c@FancyVerbLine=\count303
-\FV@StepNumber=\count304
+\FV@TabBox=\box107
+\c@FancyVerbLine=\count313
+\FV@StepNumber=\count314
 \FV@OutFile=\write4
 )
 (/usr/share/texmf-dist/tex/latex/minted/minted.sty
@@ -577,44 +647,44 @@ tim
 )
 (/usr/share/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count305
+\linenopenalty=\count315
 \output=\toks36
-\linenoprevgraf=\count306
-\linenumbersep=\dimen264
-\linenumberwidth=\dimen265
-\c@linenumber=\count307
-\c@pagewiselinenumber=\count308
-\c@LN@truepage=\count309
-\c@internallinenumber=\count310
-\c@internallinenumbers=\count311
-\quotelinenumbersep=\dimen266
-\bframerule=\dimen267
-\bframesep=\dimen268
-\bframebox=\box62
+\linenoprevgraf=\count316
+\linenumbersep=\dimen273
+\linenumberwidth=\dimen274
+\c@linenumber=\count317
+\c@pagewiselinenumber=\count318
+\c@LN@truepage=\count319
+\c@internallinenumber=\count320
+\c@internallinenumbers=\count321
+\quotelinenumbersep=\dimen275
+\bframerule=\dimen276
+\bframesep=\dimen277
+\bframebox=\box108
 LaTeX Info: Redefining \\ on input line 3056.
 )
-\c@FV@TrueTabGroupLevel=\count312
-\c@FV@TrueTabCounter=\count313
-\FV@TabBox@Group=\box63
-\FV@TmpLength=\skip56
-\c@FV@HighlightLinesStart=\count314
-\c@FV@HighlightLinesStop=\count315
-\FV@LoopCount=\count316
-\FV@NCharsBox=\box64
-\FV@BreakIndent=\dimen269
-\FV@BreakIndentNChars=\count317
-\FV@BreakSymbolSepLeft=\dimen270
-\FV@BreakSymbolSepLeftNChars=\count318
-\FV@BreakSymbolSepRight=\dimen271
-\FV@BreakSymbolSepRightNChars=\count319
-\FV@BreakSymbolIndentLeft=\dimen272
-\FV@BreakSymbolIndentLeftNChars=\count320
-\FV@BreakSymbolIndentRight=\dimen273
-\FV@BreakSymbolIndentRightNChars=\count321
-\c@FancyVerbLineBreakLast=\count322
-\FV@LineBox=\box65
-\FV@LineIndentBox=\box66
-\FV@LineWidth=\dimen274
+\c@FV@TrueTabGroupLevel=\count322
+\c@FV@TrueTabCounter=\count323
+\FV@TabBox@Group=\box109
+\FV@TmpLength=\skip58
+\c@FV@HighlightLinesStart=\count324
+\c@FV@HighlightLinesStop=\count325
+\FV@LoopCount=\count326
+\FV@NCharsBox=\box110
+\FV@BreakIndent=\dimen278
+\FV@BreakIndentNChars=\count327
+\FV@BreakSymbolSepLeft=\dimen279
+\FV@BreakSymbolSepLeftNChars=\count328
+\FV@BreakSymbolSepRight=\dimen280
+\FV@BreakSymbolSepRightNChars=\count329
+\FV@BreakSymbolIndentLeft=\dimen281
+\FV@BreakSymbolIndentLeftNChars=\count330
+\FV@BreakSymbolIndentRight=\dimen282
+\FV@BreakSymbolIndentRightNChars=\count331
+\c@FancyVerbLineBreakLast=\count332
+\FV@LineBox=\box111
+\FV@LineIndentBox=\box112
+\FV@LineWidth=\dimen283
 )
 (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
@@ -637,34 +707,34 @@ runsystem(rm -- "nea.w18")...executed.
 )
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
-\integerpart=\count323
-\decimalpart=\count324
+\integerpart=\count333
+\decimalpart=\count334
 )
 Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
 (/usr/share/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip57
-\fb@frw=\dimen275
-\fb@frh=\dimen276
-\FrameRule=\dimen277
-\FrameSep=\dimen278
+\OuterFrameSep=\skip59
+\fb@frw=\dimen284
+\fb@frh=\dimen285
+\FrameRule=\dimen286
+\FrameSep=\dimen287
 )
 (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count325
+\c@float@type=\count335
 \float@exts=\toks37
-\float@box=\box67
+\float@box=\box113
 \@float@everytoks=\toks38
-\@floatcapt=\box68
+\@floatcapt=\box114
 )
 \minted@appexistsfile=\read4
-\minted@bgbox=\box69
+\minted@bgbox=\box115
 \minted@code=\write5
-\c@minted@FancyVerbLineTemp=\count326
-\c@minted@pygmentizecounter=\count327
+\c@minted@FancyVerbLineTemp=\count336
+\c@minted@pygmentizecounter=\count337
 \@float@every@listing=\toks39
-\c@listing=\count328
+\c@listing=\count338
 )
 runsystem(mkdir -p _minted-nea)...executed.
 
@@ -674,118 +744,47 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (/usr/share/texmf-dist/tex/latex/bytefield/bytefield.sty
 Package: bytefield 2020/10/31 v2.6 Network protocol diagrams
-\bytefield@height=\skip58
-\bytefield@height@increment=\skip59
-\entire@bytefield@picture=\box70
-\bf@bitwidth=\skip60
-\bf@bitheight=\skip61
-\units@wide=\skip62
-\units@tall=\skip63
-\units@high=\skip64
-\header@xpos=\skip65
-\c@header@val=\count329
-\c@max@header@val=\count330
-\curly@box=\box71
-\wordlabelr@start=\skip66
-\wordlabelr@end=\skip67
-\wordlabell@start=\skip68
-\wordlabell@end=\skip69
-\total@lbox@width=\skip70
-\label@box@width=\skip71
-\label@box@height=\skip72
-\word@label@box=\box72
+\bytefield@height=\skip60
+\bytefield@height@increment=\skip61
+\entire@bytefield@picture=\box116
+\bf@bitwidth=\skip62
+\bf@bitheight=\skip63
+\units@wide=\skip64
+\units@tall=\skip65
+\units@high=\skip66
+\header@xpos=\skip67
+\c@header@val=\count339
+\c@max@header@val=\count340
+\curly@box=\box117
+\wordlabelr@start=\skip68
+\wordlabelr@end=\skip69
+\wordlabell@start=\skip70
+\wordlabell@end=\skip71
+\total@lbox@width=\skip72
+\label@box@width=\skip73
+\label@box@height=\skip74
+\word@label@box=\box118
 )
 (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip73
-\LTright=\skip74
-\LTpre=\skip75
-\LTpost=\skip76
-\LTchunksize=\count331
-\LTcapwidth=\dimen279
-\LT@head=\box73
-\LT@firsthead=\box74
-\LT@foot=\box75
-\LT@lastfoot=\box76
-\LT@cols=\count332
-\LT@rows=\count333
-\c@LT@tables=\count334
-\c@LT@chunks=\count335
+\LTleft=\skip75
+\LTright=\skip76
+\LTpre=\skip77
+\LTpost=\skip78
+\LTchunksize=\count341
+\LTcapwidth=\dimen288
+\LT@head=\box119
+\LT@firsthead=\box120
+\LT@foot=\box121
+\LT@lastfoot=\box122
+\LT@cols=\count342
+\LT@rows=\count343
+\c@LT@tables=\count344
+\c@LT@chunks=\count345
 \LT@p@ftn=\toks40
 )
 (/usr/share/texmf-dist/tex/latex/etoc/etoc.sty
 Package: etoc 2020/05/15 v1.09c Completely customisable TOCs (JFB)
-
-(/usr/share/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count336
-\mult@box=\box77
-\multicol@leftmargin=\dimen280
-\c@unbalance=\count337
-\c@collectmore=\count338
-\doublecol@number=\count339
-\multicoltolerance=\count340
-\multicolpretolerance=\count341
-\full@width=\dimen281
-\page@free=\dimen282
-\premulticols=\dimen283
-\postmulticols=\dimen284
-\multicolsep=\skip77
-\multicolbaselineskip=\skip78
-\partial@page=\box78
-\last@line=\box79
-\maxbalancingoverflow=\dimen285
-\mult@rightbox=\box80
-\mult@grightbox=\box81
-\mult@gfirstbox=\box82
-\mult@firstbox=\box83
-\@tempa=\box84
-\@tempa=\box85
-\@tempa=\box86
-\@tempa=\box87
-\@tempa=\box88
-\@tempa=\box89
-\@tempa=\box90
-\@tempa=\box91
-\@tempa=\box92
-\@tempa=\box93
-\@tempa=\box94
-\@tempa=\box95
-\@tempa=\box96
-\@tempa=\box97
-\@tempa=\box98
-\@tempa=\box99
-\@tempa=\box100
-\@tempa=\box101
-\@tempa=\box102
-\@tempa=\box103
-\@tempa=\box104
-\@tempa=\box105
-\@tempa=\box106
-\@tempa=\box107
-\@tempa=\box108
-\@tempa=\box109
-\@tempa=\box110
-\@tempa=\box111
-\@tempa=\box112
-\@tempa=\box113
-\@tempa=\box114
-\@tempa=\box115
-\@tempa=\box116
-\@tempa=\box117
-\@tempa=\box118
-\@tempa=\box119
-\@tempa=\box120
-\c@minrows=\count342
-\c@columnbadness=\count343
-\c@finalcolumnbadness=\count344
-\last@try=\dimen286
-\multicolovershoot=\dimen287
-\multicolundershoot=\dimen288
-\mult@nat@firstbox=\box121
-\colbreak@box=\box122
-\mc@col@check@num=\count345
-)
 \Etoc@toctoks=\toks41
 \c@etoc@tocid=\count346
 \c@etoc@tocdepth=\count347
@@ -802,22 +801,22 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count348
 \l__pdf_internal_box=\box125
 ) (./nea.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -841,7 +840,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -854,9 +853,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count355
 )
-LaTeX Info: Redefining \ref on input line 15.
-LaTeX Info: Redefining \pageref on input line 15.
-LaTeX Info: Redefining \nameref on input line 15.
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
 
 (./nea.out) (./nea.out)
 \@outlinefile=\write6
@@ -869,18 +868,51 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 
+l.57 
       [1
 
-] [2] [3]
+] [2]
+<./img//bezier2img.png, id=233, 234.8775pt x 133.6995pt>
+File: ./img//bezier2img.png Graphic file (type png)
+<use ./img//bezier2img.png>
+Package pdftex.def Info: ./img//bezier2img.png  used on input line 113.
+(pdftex.def)             Requested size: 137.9979pt x 78.55151pt.
+<./img//outlineimg.png, id=235, 426.6339pt x 118.5228pt>
+File: ./img//outlineimg.png Graphic file (type png)
+<use ./img//outlineimg.png>
+Package pdftex.def Info: ./img//outlineimg.png  used on input line 134.
+(pdftex.def)             Requested size: 207.0021pt x 57.50699pt.
+ [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.139 \begin{equation*}
+                        <./img//bezier2img.png>]
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 133.
-<./img//fontpipelineimg.png, id=230, 420.17442pt x 713.96037pt>
+ine 143.
+<./img//fontpipelineimg.png, id=247, 420.17442pt x 713.96037pt>
 File: ./img//fontpipelineimg.png Graphic file (type png)
 <use ./img//fontpipelineimg.png>
-Package pdftex.def Info: ./img//fontpipelineimg.png  used on input line 154.
+Package pdftex.def Info: ./img//fontpipelineimg.png  used on input line 164.
 (pdftex.def)             Requested size: 137.9979pt x 234.48555pt.
- [4 <./img//fontpipelineimg.png>]
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.179 
+       <./img//outlineimg.png> <./img//fontpipelineimg.png>]
+<./img//breakdownimg.png, id=258, 159.2349pt x 376.7676pt>
+File: ./img//breakdownimg.png Graphic file (type png)
+<use ./img//breakdownimg.png>
+Package pdftex.def Info: ./img//breakdownimg.png  used on input line 194.
+(pdftex.def)             Requested size: 68.99895pt x 163.25443pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--195
+\OT1/cmtt/m/n/10 TrueType-[]Reference-[]Manual/$[]\OT1/cmr/m/n/10 , which will 
+be sum-ma-rized here.
+ []
+
+[5 <./img//breakdownimg.png>]
 \width=\dimen291
 \height=\dimen292
 \depth=\dimen293
@@ -910,16 +942,15 @@ Package pdftex.def Info: ./img//fontpipelineimg.png  used on input line 154.
 \depth=\dimen317
 \totalheight=\dimen318
 
-Overfull \hbox (82.81123pt too wide) in paragraph at lines 232--234
+Overfull \hbox (82.81123pt too wide) in paragraph at lines 245--247
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
+Underfull \hbox (badness 10000) in paragraph at lines 245--247
 
  []
 
-[5]
 \width=\dimen319
 \height=\dimen320
 \depth=\dimen321
@@ -1004,142 +1035,122 @@ Underfull \hbox (badness 10000) in paragraph at lines 232--234
 \height=\dimen400
 \depth=\dimen401
 \totalheight=\dimen402
-\width=\dimen403
-\height=\dimen404
-\depth=\dimen405
-\totalheight=\dimen406
-\width=\dimen407
-\height=\dimen408
-\depth=\dimen409
-\totalheight=\dimen410
-\width=\dimen411
-\height=\dimen412
-\depth=\dimen413
-\totalheight=\dimen414
-\width=\dimen415
-\height=\dimen416
-\depth=\dimen417
-\totalheight=\dimen418
-\width=\dimen419
-\height=\dimen420
-\depth=\dimen421
-\totalheight=\dimen422
 
-Overfull \hbox (37.0pt too wide) in paragraph at lines 259--260
+Overfull \hbox (37.0pt too wide) in paragraph at lines 265--266
 [][] 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 261--264
+Underfull \hbox (badness 10000) in paragraph at lines 267--270
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--264
+Underfull \hbox (badness 10000) in paragraph at lines 267--270
 
  []
 
 [7]
-Overfull \hbox (0.7135pt too wide) in paragraph at lines 308--310
+Overfull \hbox (0.7135pt too wide) in paragraph at lines 314--316
 \OT1/cmr/m/n/10 graph-ics li-brary. In-ter-nally, it uses the freetype li-brary
  as dis-cussed above. 
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 397--397
-[]|\OT1/cmr/m/n/10 The sys-tem will
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--397
-\OT1/cmr/m/n/10 ac-cept cor-rectly
- []
-
-
-Underfull \hbox (badness 3302) in paragraph at lines 397--397
-\OT1/cmr/m/n/10 formed TTF files
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
-[]|\OT1/cmr/m/n/10 The sys-tem will
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
-\OT1/cmr/m/n/10 cor-rectly formed
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
-[]|\OT1/cmr/m/n/10 The sys-tem will
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 403--403
 []|\OT1/cmr/m/n/10 The sys-tem will
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--407
-[]|\OT1/cmr/m/n/10 The parser sec-
+Underfull \hbox (badness 10000) in paragraph at lines 403--403
+\OT1/cmr/m/n/10 ac-cept cor-rectly
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 405--407
-\OT1/cmr/m/n/10 will out-put bezier
+Underfull \hbox (badness 3302) in paragraph at lines 403--403
+\OT1/cmr/m/n/10 formed TTF files
  []
 
 
-Underfull \hbox (badness 6995) in paragraph at lines 412--413
-\OT1/cmr/m/n/10 ac-ter to be the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 405--405
 []|\OT1/cmr/m/n/10 The sys-tem will
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 405--405
+\OT1/cmr/m/n/10 cor-rectly formed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 407--407
+[]|\OT1/cmr/m/n/10 The sys-tem will
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--409
+[]|\OT1/cmr/m/n/10 The sys-tem will
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--413
+[]|\OT1/cmr/m/n/10 The parser sec-
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 411--413
+\OT1/cmr/m/n/10 will out-put bezier
+ []
+
+
+Underfull \hbox (badness 6995) in paragraph at lines 418--419
+\OT1/cmr/m/n/10 ac-ter to be the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+[]|\OT1/cmr/m/n/10 The sys-tem will
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 \OT1/cmr/m/n/10 ren-der fonts at
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 \OT1/cmr/m/n/10 large point-sizes
  []
 
 
-Underfull \hbox (badness 4254) in paragraph at lines 425--427
+Underfull \hbox (badness 4254) in paragraph at lines 431--433
 \OT1/cmr/m/n/10 it by the parser
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 439--439
+Underfull \hbox (badness 1888) in paragraph at lines 445--445
 \OT1/cmr/m/n/10 port font out-lines
  []
 
 
-Overfull \hbox (21.48854pt too wide) in alignment at lines 394--453
+Overfull \hbox (21.48854pt too wide) in alignment at lines 400--459
  [] [] [] [] 
  []
 
 [10] [11]
 Chapter 2.
-<./img//design/highlevelout.png, id=274, 611.60727pt x 272.05772pt>
+<./img//design/highlevelout.png, id=294, 611.60727pt x 272.05772pt>
 File: ./img//design/highlevelout.png Graphic file (type png)
 <use ./img//design/highlevelout.png>
-Package pdftex.def Info: ./img//design/highlevelout.png  used on input line 462
+Package pdftex.def Info: ./img//design/highlevelout.png  used on input line 468
 .
 (pdftex.def)             Requested size: 172.5pt x 76.7319pt.
 
-Underfull \hbox (badness 7631) in paragraph at lines 465--466
+Underfull \hbox (badness 7631) in paragraph at lines 471--472
 []\OT1/cmr/m/n/10 The task has 2 clear sub-di-vi-
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 468--469
+Underfull \hbox (badness 1881) in paragraph at lines 474--475
 []\OT1/cmr/m/n/10 Displaying the parsed bezier
  []
 
@@ -1147,14 +1158,14 @@ Underfull \hbox (badness 1881) in paragraph at lines 468--469
 
  <./img//design/highlevelout.png>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 532.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 538.
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--569
+Underfull \hbox (badness 10000) in paragraph at lines 575--575
 []\OT1/cmtt/m/n/10 Font(std::string filename, char
  []
 
 
-Overfull \hbox (5.55807pt too wide) in paragraph at lines 538--574
+Overfull \hbox (5.55807pt too wide) in paragraph at lines 544--580
  [] 
  []
 
@@ -1220,31 +1231,73 @@ ator[]<[][]char[][]>[](file)),
 Chapter 4.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 792.
+(hyperref)                than one, level fixed on input line 798.
 
-<./img//ide.png, id=466, 462.2871pt x 249.0906pt>
+<./img//ide.png, id=486, 462.2871pt x 249.0906pt>
 File: ./img//ide.png Graphic file (type png)
 <use ./img//ide.png>
-Package pdftex.def Info: ./img//ide.png  used on input line 795.
+Package pdftex.def Info: ./img//ide.png  used on input line 801.
 (pdftex.def)             Requested size: 341.43306pt x 183.97067pt.
 [46
 
- <./img//ide.png>] [47]
+ <./img//ide.png>]
+<./img//debugging1.png, id=492, 1092.08pt x 355.3275pt>
+File: ./img//debugging1.png Graphic file (type png)
+<use ./img//debugging1.png>
+Package pdftex.def Info: ./img//debugging1.png  used on input line 819.
+(pdftex.def)             Requested size: 341.43306pt x 111.08836pt.
+<./img//sample1.png, id=493, 401.5pt x 401.5pt>
+File: ./img//sample1.png Graphic file (type png)
+<use ./img//sample1.png>
+Package pdftex.def Info: ./img//sample1.png  used on input line 847.
+(pdftex.def)             Requested size: 77.62447pt x 77.62134pt.
+<./img//sample3.png, id=494, 401.5pt x 401.5pt>
+File: ./img//sample3.png Graphic file (type png)
+<use ./img//sample3.png>
+Package pdftex.def Info: ./img//sample3.png  used on input line 848.
+(pdftex.def)             Requested size: 77.62447pt x 77.62134pt.
+<./img//sample2.png, id=495, 401.5pt x 401.5pt>
+File: ./img//sample2.png Graphic file (type png)
+<use ./img//sample2.png>
+Package pdftex.def Info: ./img//sample2.png  used on input line 852.
+(pdftex.def)             Requested size: 77.62447pt x 77.62134pt.
+<./img//sample4.png, id=496, 401.5pt x 401.5pt>
+File: ./img//sample4.png Graphic file (type png)
+<use ./img//sample4.png>
+Package pdftex.def Info: ./img//sample4.png  used on input line 853.
+(pdftex.def)             Requested size: 77.62447pt x 77.62134pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[47pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.863 
+       <./img//debugging1.png>] [48 <./img//sample1.png> <./img//sample3.png> <
+./img//sample2.png> <./img//sample4.png>]
 Chapter 5.
-[48
+[49
 
 ] (./nea.aux)
-Package rerunfilecheck Info: File `nea.out' has not changed.
-(rerunfilecheck)             Checksum: C57863CE5D7ADE6D660FE03ED76A00A3;2516.
+
+Package rerunfilecheck Warning: File `nea.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `nea.out':
+(rerunfilecheck)             Before: 05F08D5E14DF54EF4C3C57675A538A2B;2727
+(rerunfilecheck)             After:  E09DED03C3912AEA72BDC02E6956DFE9;2781.
  ) 
 Here is how much of TeX's memory you used:
- 21173 strings out of 479383
- 410483 string characters out of 5875830
- 773381 words of memory out of 5000000
- 37668 multiletter control sequences out of 15000+600000
+ 21242 strings out of 479383
+ 411800 string characters out of 5875830
+ 769960 words of memory out of 5000000
+ 37729 multiletter control sequences out of 15000+600000
  411829 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,12n,124p,1019b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,12n,124p,1019b,967s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
@@ -1259,10 +1312,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on nea.pdf (49 pages, 646950 bytes).
+Output written on nea.pdf (50 pages, 798321 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
- 116 named destinations out of 1000 (max. 500000)
- 468 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 489 compressed objects within 5 object streams
+ 124 named destinations out of 1000 (max. 500000)
+ 532 words of extra memory for PDF output out of 10000 (max. 10000000)
 

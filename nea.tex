@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{wrapfig}
+\usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{fancyvrb}
 \usepackage{minted}
@@ -107,6 +108,11 @@ is highly structured, with every section of the file having a specific role
 depending on it's position, (hereafter known as \textit{offset}).
 
 \subsection{Bezier Curves}
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.4\textwidth]{bezier2img}
+  \caption{\textit{A line segment and bezier curve, with control point}}
+\end{wrapfigure}
 Individual glyphs of a font are built up using \textit{outlines}, which are
 themselves built of several segments of line and curve. More specifically, an
 outline consists of a set of line segments and quadratic bezier curves, which
@@ -123,7 +129,11 @@ the 3 control points for the curve, as $t$ ranges from $0$ to $1$. We can draw
 this in a similar way to how we draw line segments: for a sufficient sample rate
 over $t$, we can evaluate $\mathbf{B}(t)$ and, rounding to the nearest pixel,
 plot that point.
-
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.6\textwidth]{outlineimg}
+\caption{\textit{Letters are made up of line segments and bezier curves}}
+\end{figure}
 Similarly, we can describe a line segment (which is effectively a linear bezier
 curve) using the following equation:
 \begin{equation*}
@@ -179,7 +189,10 @@ is now used by virtually every consumer operating system and font engine. The
 full specification is available at
 \url{https://developer.apple.com/fonts/TrueType-Reference-Manual/}, which will
 be summarized here.
-
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.2\textwidth]{breakdownimg}
+\end{wrapfigure}
 The format is a \textit{binary} file, which means that we look at the file in
 terms of bytes, rather than in terms of characters and lines of text. The file
 is composed of a number of \textit{tables}, which are analoguous to chapters of
@@ -248,17 +261,10 @@ structure is either a simple or compound glyph, and is of the form
   \wordbox[blr]{1}{}\\
   \wordbox{2}{Array of deltaX}\\
   \wordbox{2}{Array of deltaY}\\
-  \\
-  \\
-  \bitbox{16}{\textbf{Compound Glyph Data}}\\
-  \bitheader{0-15} \\
-  \wordbox{1}{Flags (see full spec for details)}\\
-  \wordbox{1}{Glyph Index}\\
-  \wordbox{2}{\textit{variable size}\\Argument 1 (flag dependent)}\\
-  \wordbox{2}{\textit{variable size}\\Argument 2 (flag dependent)}
+
 \end{bytefield}
 
-\textit{Note: Most uses of compound glyph tables are outside of the scope of this project.}
+\textit{Note: Compound glyph tables are outside of the scope of this project.}
 \\
 \\
 
@@ -808,12 +814,54 @@ Fault (when a program tries to read from invalid memory) could occur. The
 debugger catches this, and I can see the exact line at which the segfault
 occurs, which makes it significantly easier to identify and resolve the issue.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=12cm]{debugging1}
+  \caption{\textit{My debugger after a segmentation fault has occured}}
+\end{figure}
+
+
 \subsection{Unit Testing}
 
 Unit testing is the act of testing a program one unit at a time, so that you can
 be sure that if all units are working as expected, then hopefully the entire
 program is working as expected. To accomplish this I created my own sections of
-TTF files that would test 
+TTF files that would test specific areas of the program, and ran it explicitly
+with those files. This meant that if something broke, I could run my tests to
+determine which area the problem is, complementing my other debugging using a
+manual debugger.
+
+\section{Testing the final program}
+To test the final program, I used a number of methods. First, I simply observed
+the output, to check that it resembled the font that I was giving it. I then put
+the program through a set of tests that measured it's speed, as well as
+comparing it's output to inkscape, which internally uses freetype as it's font
+renderer. Finally, I tested it with fonts other than that of Roboto, which I had
+been using to test the font whilst I was developing the system.
+
+\subsection{Sample Outputs}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.45\textwidth]{sample1}
+    \includegraphics[width=.45\textwidth]{sample3}
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.45\textwidth]{sample2}
+    \includegraphics[width=.45\textwidth]{sample4}
+  \end{minipage}
+\end{figure}
+
+The above samples are from my program, running with the font Roboto.ttf. The
+program supports all alphanumeric characters, along with most of the rest of the
+displayable ASCII range. The only notable exclusion is the semicolon (`;') which
+is a compound glyph, reusing the glyph for full stop. The parsing of these
+proved too complicated in the time given, but the architecture of the program
+means that it could be easily added in later.
+
+\subsection{}  
 
 \chapter{Evaluation}
 
