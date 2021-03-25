@@ -79,24 +79,49 @@ sharp pixel edges of the shapes to make them appear smoother to the eye.
 \textbf{Font Family}: a collection of typefaces, at different weights, or styles
 such as italics.
 \\
+
 \textbf{Typeface}: commonly referred to as a font, a typeface is a style of
 lettering that can be displayed on the screen or in print.
 \\
+
 \textbf{Font}: an instance of a typeface at a specfic size.
 \\
+
 \textbf{Glyph}: the shape corresponding to a specific character in a specific
 font.
 \\
+
 \textbf{TrueType}: TrueType is the industry standard for font files, and the
 specific file format that is being targeted by this project. It contains all of
 the data needed to describe a typeface (or sometimes multiple typefaces).
 \\
+
 \textbf{TTF file}: A file following the TrueType format.
 \\
+
 \textbf{Table}: a table in a TTF file is a section of data following a specfic
 format that is indexed using the table directory at the start of the font file.
 For example, the \texttt{glyf} table stores the actual glyph data of the font,
 and the \texttt{cmap} table stores the mappings between character and glyph.
+\\
+
+\textbf{Anti-Aliasing}: the act of smoothing a line, curve or other bitmap with
+lighter shades of it's colours to make it appear smoother to the viewier.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{aa}
+  \caption{\textit{An anti-aliased line on the left, and a non-anti-aliased line
+    on the right.}}
+\end{figure}
+
+\textbf{Bezier Curve}: A curve that is defined by a set of equation. The TTF
+specification uses a variant of these called \textbf{Quadratic Bezier Curves},
+which have a single control point. For more details see the section on Bezier
+Curves below.
+\\
+
+\textbf{}
 
 \subsection{Parsing}
 As described above, parsing is the act of taking a text or binary sequence and
@@ -861,8 +886,13 @@ is a compound glyph, reusing the glyph for full stop. The parsing of these
 proved too complicated in the time given, but the architecture of the program
 means that it could be easily added in later.
 
-\subsection{}  
-
+\subsection{Speed Testing}
+\todo{Wait until I get back to accomodation for faster speed testing}
+\dots
+\subsection{Comparsion with Inkscape}
+\dots
+\subsection{Other Font Files}
+\dots
 \chapter{Evaluation}
 
 

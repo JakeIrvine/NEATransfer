@@ -2,12 +2,12 @@
 \contentsline {chapter}{\numberline {1}Analysis}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Project Background}{3}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Domain Terminology}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Parsing}{3}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Bezier Curves}{3}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}The Font Pipeline}{4}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.2}Parsing}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Bezier Curves}{4}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}The Font Pipeline}{5}{subsection.1.1.4}%
 \contentsline {subsection}{\numberline {1.1.5}The TrueType Format}{5}{subsection.1.1.5}%
-\contentsline {section}{\numberline {1.2}Existing Solutions}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}freetype}{7}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.2}Existing Solutions}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}freetype}{8}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}SDL\_ttf}{8}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}Quartz}{9}{subsection.1.2.3}%
 \contentsline {section}{\numberline {1.3}User Feedback}{9}{section.1.3}%
@@ -48,5 +48,7 @@
 \contentsline {subsection}{\numberline {4.0.2}Unit Testing}{47}{subsection.4.0.2}%
 \contentsline {section}{\numberline {4.1}Testing the final program}{47}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Sample Outputs}{48}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}}{48}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}Speed Testing}{48}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Comparsion with Inkscape}{48}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Other Font Files}{48}{subsection.4.1.4}%
 \contentsline {chapter}{\numberline {5}Evaluation}{49}{chapter.5}%
