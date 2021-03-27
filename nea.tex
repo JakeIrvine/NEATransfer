@@ -18,6 +18,16 @@
 \title{NEA: Font Rasterizer}
 \author{Jake Irvine}
 
+
+% THINGS LEFT TO DO:
+%
+% - expand docuemented design with flowcharts etc
+% - finish testing & evaluation
+% - spelling pass
+% - cry????
+% - replace std::abort with proper error checking
+% - commenting pass on program
+
 \maketitle
 \chapter{Analysis}
 
@@ -121,7 +131,7 @@ which have a single control point. For more details see the section on Bezier
 Curves below.
 \\
 
-\textbf{}
+\textbf{Raster Image}: A set of pixels that describe an image  
 
 \subsection{Parsing}
 As described above, parsing is the act of taking a text or binary sequence and
@@ -299,6 +309,13 @@ into the \texttt{loca} table to get a glyph offset and length. Finally, we can
 use the offset and length to find the appropriate section of the \texttt{glyf}
 table, and get the glyph data itself.
 
+\subsection{Hinting}
+
+The TrueType format provides support for font hinting, which is a set of small
+adjustments to the generated outline before it is displayed on the screen to
+make it better fit the pixel grid. These are implemented through a virtual
+machine, which runs a set of instructions that alter the font metrics and points
+at runtime.   
 
 \section{Existing Solutions}
 
@@ -388,6 +405,8 @@ Disadvantages:
 I consulted with a potential user of my project, to assist in determining what
 my priorities should be. They use computers for programming, revision, and
 entertainment, so they spend a lot of time looking at computer-generated text.
+They also program GUI based applications that need to display text on the
+screen, so they are the target user for this system.
 Their responses are shown below in italics:
 
 Do you notice the speed of font rendering on your computer?
@@ -433,7 +452,7 @@ priority, I should give to my objectives below.
     \hline
     4 & Low & The system will output information about the tables on stdout. & This would be beneficial for both debugging purposes and to demonstrate how the internals of a font work. \\
     \hline
-    5 & High & The parser section of the system will output bezier curevs that
+    5 & High & The parser section of the system will output bezier curves that
                can be sent to the renderer to display the font, or exposed via
                an API for use in some other application. & Critical
                                                            functionality that is
@@ -883,16 +902,77 @@ The above samples are from my program, running with the font Roboto.ttf. The
 program supports all alphanumeric characters, along with most of the rest of the
 displayable ASCII range. The only notable exclusion is the semicolon (`;') which
 is a compound glyph, reusing the glyph for full stop. The parsing of these
-proved too complicated in the time given, but the architecture of the program
+proved too complicated to implement in the time given, but the architecture of the program
 means that it could be easily added in later.
 
-\subsection{Speed Testing}
-\todo{Wait until I get back to accomodation for faster speed testing}
-\dots
-\subsection{Comparsion with Inkscape}
-\dots
-\subsection{Other Font Files}
-\dots
+\subsection{Objective 1: The system will accept correctly formed TTF files as
+  input.}
+I tested this by running my program with several correctly formed TTF files:
+Roboto, Roboto Italic, Noto Sans, and Hack Mono. The first three files loaded
+correctly into my program, whereas Hack Mono resulted in an error. Further
+investigation revealed that Hack Mono used an advanced feature of the
+\texttt{loca} table that my parser did not support. As a result of this testing,
+I added code to safely handle this error, so that files containing unsupported
+features are rejected with a descriptive error message rather than the program simply crashing.
+
+\subsection{Objective 2: The system will reject files that do not exist, or are
+  not correctly formed TTF files.}
+
+To test this, I inputted the filenames of nonexistent files and files that are
+not TTF files into the generator. I tested for rejection of a nonexistent file,
+a image file called \texttt{test.png}, and that same image file renamed to
+\texttt{test.ttf}. In all cases, the program outputs an error message and exits
+cleanly. Even if the file appears to have a .ttf extension, the program checks
+the file structure rather than the filename to determine if a file is a TTF file
+or not.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{notfound}
+  \caption{\textit{The program rejects invalid or nonexistent files.}}
+\end{figure}
+
+\subsection{Objective 3: The system will correctly parse the tables head, cmap, loca, and glyf to read the font.}
+
+Testing this was quite difficult, because just looking at the font file it is often
+difficult to determine what the correct outputs of the parser should be. To
+remedy this, I took advantage of the fact that freetype, one of the existing
+solutions described in the Analysis section, is open source, which meant I could
+inspect it's internals. I debugged the freetype library using the same debug
+tools above, to check that the values reported by freetype were the same as the
+ones that I was parsing. This was a great help during development, where I
+couldn't check that the fonts were rendering correctly because the parser and
+renderer was not complete.
+
+\subsection{Objective 4: The system will output information about the tables on stdout.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.2\textwidth]{tables2}
+  \caption{\textit{The program outputs various information on the tables on
+      stdout for debugging purposes.}}
+\end{figure}
+
+\subsection{Objective 5: The parser section of the system will output bezier
+  curves that can be sent to the renderer to display the font, or exposed via an
+  API for use in some other application.}
+
+This was achieved by the parser system, which outputs the curves needed to then
+render the glyph in the rendering section. For example, the curves needed to
+render the character `A' are composed of 12 points, as seen in the debug view
+below:
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{pointss}
+\end{center}
+
+Testing that these points are correct was done by putting them into the
+renderer, and observing that the correct glyph was displayed:
+
+\begin{center}
+\includegraphics[width=.45\textwidth]{sample1}
+\end{center}
+
 \chapter{Evaluation}
 
 

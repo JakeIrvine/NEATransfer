@@ -5,6 +5,7 @@
 
 \PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/CMAPTable.h\PYGZdq{}}
 \PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../include/util.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
 
 \PYG{n}{CMAPTable}\PYG{o}{::}\PYG{n}{CMAPTable}\PYG{p}{()} \PYG{p}{\PYGZob{}}
 
@@ -113,6 +114,7 @@
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{idRangeOffset} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Error: This font uses a nonzero idRangeOffset, which is not supported yet.\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
         \PYG{n}{std}\PYG{o}{::}\PYG{n}{abort}\PYG{p}{();}
     \PYG{p}{\PYGZcb{}}
 

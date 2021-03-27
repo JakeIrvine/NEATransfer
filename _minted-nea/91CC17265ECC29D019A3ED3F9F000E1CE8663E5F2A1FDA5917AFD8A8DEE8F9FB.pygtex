@@ -15,6 +15,12 @@
 
     \PYG{n}{tables} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{,} \PYG{n}{TableHeader}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
 
+
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{fontType} \PYG{o}{!=} \PYG{l+m+mi}{65536}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Error: This does not appear to be a TTF file\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+        \PYG{n}{std}\PYG{o}{::}\PYG{n}{abort}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+
     \PYG{n}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZgt{} Enumerating tables...\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
 
     \PYG{c+c1}{// ok, now time to parse each table}
